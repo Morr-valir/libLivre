@@ -1,0 +1,48 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=DM+Serif+Display&display=swap");
+body {
+  font-family: "DM Sans", sans-serif;
+}
+
+.main-content {
+  padding-top: 25px;
+  background: #ebebeb;
+}
+
+.second-nav {
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+}
+
+#myCarousel {
+  padding: 2rem;
+  background: #00211e;
+}
+#myCarousel .carousel-item .container {
+  padding: 6rem;
+  background: #00211e;
+}
+#myCarousel .carousel-item .container h1 {
+  font-family: "DM Serif Display", serif;
+}
+
+.card-lib {
+  max-width: 200px;
+  text-align: center;
+  margin-right: 20px;
+  margin-bottom: 15px;
+}
+.card-lib figure {
+  max-width: 200px;
+  max-height: 200px;
+}
+.card-lib .card-lib-link {
+  text-decoration: none;
+  color: #424242;
+  font-weight: 600;
+}
+
+.btn-vert {
+  font-family: "DM Serif Display", serif;
+  color: #23645e;
+  font-weight: 600;
+  font-size: 20px;
+}/*# sourceMappingURL=main.css.map */

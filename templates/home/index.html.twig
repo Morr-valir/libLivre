@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}lib livre | accueil{% endblock %}
+
+{% block body %}
+<header class="Header">
+{% include "./components/navbar/navbar.html.twig" %}
+{% include "./components/slider/slider.html.twig" %}
+{% include "./components/navbar/homeMenu.html.twig" %}
+</header>
+<main class="main-content">
+    <div class="container">
+        <h1 class="h4 mb-4">Nos sélections thématiques</h1>
+        {% include "./components/slider/slider-lib.html.twig" %}
+    </div>
+</main>
+
+{% endblock %}
