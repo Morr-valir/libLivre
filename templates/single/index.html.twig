@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}lib livre | accueil{% endblock %}
+
+{% block body %}
+<header class="Header">
+{% include "./components/navbar/navbar.html.twig" %}
+{% include "./components/navbar/homeMenu.html.twig" %}
+</header>
+<main class="main-content" style="height: 100%;">
+    <div class="container">
+    <section class="info-item d-flex mb-5 mt-4">
+        <figure class="mr-4">
+            <img src="https://www.lalibrairie.com/cache/img/livres/909/9782355849909-xs.webp" alt="couverture livre">
+        </figure>
+        <div class="description">
+            <h1 class="h4 dm-font">Titre du livre</h1>
+            <p>de : nom de l'auteur</p>
+            <p>Disponibilité : En stock</p>
+            <a href="#" class="btn btn-outline-success">Commander</a>
+        </div>
+    </section>
+    <section class="description-book">
+        <h2 class="h3 dm-font">Quatrième de couverture</h2>
+        <p>
+            « Le froid arriva. Et puis le froid s'installa à jamais. »
+            1972, nord-est du Canada. Dans cette région glaciale, balayée par les vents, où l'hiver dure huit mois, la petite communauté de Jasperville survit grâce au travail dans les mines de fer. Les conditions de vie y sont difficiles. Au-delà du village, il n'y a rien. Juste une nature hostile, quelques ours, des loups. Aussi, quand le corps d'une adolescente du village est découvert aux abords de la forêt, la gravité des blessures laisse-t-elle supposer qu'elle a été victime d'une bête sauvage. Ce sera en tout cas la version officielle. Et tout le monde prie pour qu'elle soit vraie. Mais, quelque temps après, le corps d'une autre jeune fille est retrouvé. Des années plus tard, de retour à Jasperville où il a passé son enfance, Jack Devereaux réalise que tout le monde se contente aujourd'hui encore des mensonges du passé, par peur d'affronter une vérité bien trop dérangeante.
+            Dans la droite ligne de Seul le silence, un roman troublant de beauté et d'émotion, à classer sans conteste parmi les plus grandes réussites de R. J. Ellory.
+        </p>
+    </section>
+    </div>
+</main>
+{% include "./components/footer/footer.html.twig" %}
+{% endblock %}

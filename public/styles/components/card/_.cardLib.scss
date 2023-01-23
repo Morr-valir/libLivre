@@ -13,3 +13,14 @@
         font-weight: 600;
     }
 }
+.card-item{
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+}
+.card-item-content{
+    margin-left: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}

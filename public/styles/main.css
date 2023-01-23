@@ -1,6 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=DM+Serif+Display&display=swap");
-body {
+html, body {
+  height: 100%;
   font-family: "DM Sans", sans-serif;
+}
+
+.dm-font {
+  font-family: "DM Serif Display", serif;
 }
 
 .main-content {
@@ -40,9 +45,39 @@ body {
   font-weight: 600;
 }
 
+.card-item {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.card-item-content {
+  margin-left: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
 .btn-vert {
   font-family: "DM Serif Display", serif;
   color: #23645e;
   font-weight: 600;
   font-size: 20px;
+}
+
+.bg-vert {
+  background: #23645e;
+  color: whitesmoke;
+  font-weight: 600;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+}
+
+footer {
+  background: #00211e;
+}
+
+.info-item {
+  gap: 15px;
 }/*# sourceMappingURL=main.css.map */
