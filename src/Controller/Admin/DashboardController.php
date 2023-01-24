@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Book;
+use App\Entity\Booking;
 use App\Entity\Category;
 use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
@@ -30,11 +31,12 @@ class DashboardController extends AbstractDashboardController
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::section('Gestion des livres');
-        yield MenuItem::linkToCrud('livres','fas fa-bowl-rice',Book::class);
-        yield MenuItem::linkToCrud('catégories','fas fa-bowl-rice',Category::class);
+        yield MenuItem::linkToCrud('livre','fas fa-bowl-rice',Book::class);
+        yield MenuItem::linkToCrud('catégorie','fas fa-bowl-rice',Category::class);
         yield MenuItem::section('Gestion des réservation');
+        yield MenuItem::linkToCrud('Réservation','fas fa-bowl-rice',Booking::class);
         yield MenuItem::section('Gestion utilisateur');
-        yield MenuItem::linkToCrud('Utilisateurs','fas fa-bowl-rice',User::class);
+        yield MenuItem::linkToCrud('Utilisateur','fas fa-bowl-rice',User::class);
         // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
     }
 }
