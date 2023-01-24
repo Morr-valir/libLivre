@@ -28,6 +28,10 @@ class Booking
     #[ORM\ManyToMany(targetEntity: Book::class)]
     private Collection $books;
 
+    #[ORM\ManyToOne]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?StateBooking $state = null;
+
     public function __construct()
     {
         $this->books = new ArrayCollection();
@@ -94,6 +98,18 @@ class Booking
     public function removeBook(Book $book): self
     {
         $this->books->removeElement($book);
+
+        return $this;
+    }
+
+    public function getState(): ?StateBooking
+    {
+        return $this->state;
+    }
+
+    public function setState(?StateBooking $state): self
+    {
+        $this->state = $state;
 
         return $this;
     }
