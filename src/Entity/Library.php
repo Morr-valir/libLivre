@@ -2,10 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\LibraryRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\LibraryRepository;
+use Doctrine\Common\Collections\Collection;
+use phpDocumentor\Reflection\Types\Nullable;
+use Doctrine\Common\Collections\ArrayCollection;
 
 #[ORM\Entity(repositoryClass: LibraryRepository::class)]
 class Library
@@ -25,7 +26,8 @@ class Library
     private ?string $tel = null;
 
     #[ORM\OneToMany(mappedBy: 'libraryId', targetEntity: Stock::class, orphanRemoval: true)]
-    private Collection $stocks;
+    #[ORM\Column(nullable: true)]
+    private ?Collection $stocks;
 
     public function __construct()
     {
@@ -76,16 +78,18 @@ class Library
     /**
      * @return Collection<int, Stock>
      */
-    public function getStocks(): Collection
+    public function getStocks(): ?Collection
     {
         return $this->stocks;
     }
 
-    public function addStock(Stock $stock): self
+    public function addStock(?Stock $stock): self
     {
         if (!$this->stocks->contains($stock)) {
             $this->stocks->add($stock);
-            $stock->setLibraryId($this);
+            if($stock){
+                $stock->setLibraryId($this);
+            }
         }
 
         return $this;
