@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\BookingRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: BookingRepository::class)]
@@ -22,6 +24,14 @@ class Booking
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
     private ?User $userId = null;
+
+    #[ORM\ManyToMany(targetEntity: Book::class)]
+    private Collection $books;
+
+    public function __construct()
+    {
+        $this->books = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -60,6 +70,30 @@ class Booking
     public function setUserId(?User $userId): self
     {
         $this->userId = $userId;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Book>
+     */
+    public function getBooks(): Collection
+    {
+        return $this->books;
+    }
+
+    public function addBook(Book $book): self
+    {
+        if (!$this->books->contains($book)) {
+            $this->books->add($book);
+        }
+
+        return $this;
+    }
+
+    public function removeBook(Book $book): self
+    {
+        $this->books->removeElement($book);
 
         return $this;
     }
