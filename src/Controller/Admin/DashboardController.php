@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Book;
 use App\Entity\Booking;
 use App\Entity\Category;
+use App\Entity\StateBooking;
 use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -34,6 +35,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('livre','fas fa-bowl-rice',Book::class);
         yield MenuItem::linkToCrud('catégorie','fas fa-bowl-rice',Category::class);
         yield MenuItem::section('Gestion des réservation');
+        yield MenuItem::linkToCrud('Etat réservation','fas fa-bowl-rice',StateBooking::class);
         yield MenuItem::linkToCrud('Réservation','fas fa-bowl-rice',Booking::class);
         yield MenuItem::section('Gestion utilisateur');
         yield MenuItem::linkToCrud('Utilisateur','fas fa-bowl-rice',User::class);
