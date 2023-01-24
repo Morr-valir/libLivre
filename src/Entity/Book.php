@@ -26,7 +26,7 @@ class Book
     private ?string $summary = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $relaseDate = null;
+    private ?\DateTimeInterface $releaseDate = null;
 
     #[ORM\ManyToMany(targetEntity: Category::class)]
     private Collection $categories;
@@ -77,14 +77,14 @@ class Book
         return $this;
     }
 
-    public function getRelaseDate(): ?\DateTimeInterface
+    public function getReleaseDate(): ?\DateTimeInterface
     {
-        return $this->relaseDate;
+        return $this->releaseDate;
     }
 
-    public function setRelaseDate(\DateTimeInterface $relaseDate): self
+    public function setReleaseDate(\DateTimeInterface $releaseDate): self
     {
-        $this->relaseDate = $relaseDate;
+        $this->releaseDate =$releaseDate;
 
         return $this;
     }
