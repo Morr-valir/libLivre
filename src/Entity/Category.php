@@ -16,6 +16,9 @@ class Category
     #[ORM\Column(length: 150)]
     private ?string $name = null;
 
+    #[ORM\Column]
+    private ?bool $isForAdult = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -29,6 +32,18 @@ class Category
     public function setName(string $name): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    public function isIsForAdult(): ?bool
+    {
+        return $this->isForAdult;
+    }
+
+    public function setIsForAdult(bool $isForAdult): self
+    {
+        $this->isForAdult = $isForAdult;
 
         return $this;
     }
