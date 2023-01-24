@@ -4,8 +4,6 @@ namespace App\DataFixtures;
 
 use DateTime;
 use App\Entity\Book;
-use App\Entity\Stock;
-use App\Entity\Library;
 use App\Entity\Category;
 use App\Entity\StateBooking;
 use Doctrine\Persistence\ObjectManager;
@@ -15,24 +13,6 @@ class AppFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-
-        // Création des 2 Library
-        $library1 = new Library();
-        $library1->setName("Bibliothèque le Port")
-        ->setAdress("100 rue le Port")
-        ->setTel("0692123456")
-        ->addStock(null);
-        $manager->persist($library1);
-        
-        $library2 = new Library();
-        $library2->setName("Bibliothèque Saint-Denis")
-        ->setAdress("100 rue Saint-Denis")
-        ->setTel("0692123456")
-        ->addStock(null);
-        $manager->persist($library2);
-        
-        $manager->flush();
-
         // Création des 2 Category
         $category1 = new Category();
         $category1->setName("Aventure")
@@ -59,14 +39,6 @@ class AppFixtures extends Fixture
         $manager->persist($book1);
         $manager->flush();
 
-        // Création Stock du Book1
-        $stock1 = new Stock();
-        $stock1->setQuantity(1)
-        ->setBookId($book1)
-        ->setLibraryId($library1);
-        $manager->persist($stock1);
-        $manager->flush();
-
         $book2 = new Book();
         $date2 = new DateTime('06/04/2014');
         $book2->setName("Excalibur")
@@ -76,15 +48,6 @@ class AppFixtures extends Fixture
         ->addCategory($category2);
         $manager->persist($book2);
         $manager->flush();
-
-        // Création Stock du Book2
-        $stock2 = new Stock();
-        $stock2->setQuantity(1)
-        ->setBookId($book2)
-        ->setLibraryId($library1);
-        $manager->persist($stock2);
-        $manager->flush();
-
 
         // Création des State
         $states = ["Reserver","En cours","Emprunter","Terminer"];
