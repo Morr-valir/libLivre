@@ -41,9 +41,6 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Réservation','fas fa-bowl-rice',Booking::class);
         yield MenuItem::section('Gestion utilisateur');
         yield MenuItem::linkToCrud('Utilisateur','fas fa-bowl-rice',User::class);
-        yield MenuItem::section('Gestion des stocks');
-        yield MenuItem::linkToCrud('Stock','fas fa-bowl-rice',Stock::class);
-        yield MenuItem::linkToCrud('Bibliothèque','fas fa-bowl-rice',Library::class);
         // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
     }
 }
