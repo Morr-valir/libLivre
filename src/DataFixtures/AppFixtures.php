@@ -35,7 +35,8 @@ class AppFixtures extends Fixture
         ->setAuthor("Nom de l'auteur")
         ->setSummary("Résumé du livre ici Résumé du livre ici Résumé du livre ici Résumé du livre ici Résumé du livre ici Résumé du livre ici Résumé du livre ici Résumé du livre ici")
         ->setReleaseDate($date1)
-        ->addCategory($category1);
+        ->addCategory($category1)
+        ->setImage('https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcT99IrfJ3_BVvv08GQfE1GO0w7fXygEag5pblx5mb3ItWfmuUa4');
         $manager->persist($book1);
         $manager->flush();
 
@@ -45,7 +46,8 @@ class AppFixtures extends Fixture
         ->setAuthor("Nom de l'auteur 2")
         ->setSummary("Résumé du livre ici Résumé du livre ici Résumé du livre ici Résumé du livre ici Résumé du livre ici Résumé du livre ici Résumé du livre ici Résumé du livre ici")
         ->setReleaseDate($date2)
-        ->addCategory($category2);
+        ->addCategory($category2)
+        ->setImage('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSN2BZludkjNUBX46SzMVg8l9MYjAuCjefpwb3Gdf8aGJKy3A73');
         $manager->persist($book2);
         $manager->flush();
 
