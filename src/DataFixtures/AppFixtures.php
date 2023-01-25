@@ -4,6 +4,7 @@ namespace App\DataFixtures;
 
 use DateTime;
 use App\Entity\Book;
+use App\Entity\User;
 use App\Entity\Category;
 use App\Entity\StateBooking;
 use Doctrine\Persistence\ObjectManager;
@@ -36,6 +37,7 @@ class AppFixtures extends Fixture
         ->setSummary("Résumé du livre ici Résumé du livre ici Résumé du livre ici Résumé du livre ici Résumé du livre ici Résumé du livre ici Résumé du livre ici Résumé du livre ici")
         ->setReleaseDate($date1)
         ->addCategory($category1)
+        ->setIsAvailable(true)
         ->setImage('https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcT99IrfJ3_BVvv08GQfE1GO0w7fXygEag5pblx5mb3ItWfmuUa4');
         $manager->persist($book1);
         $manager->flush();
@@ -47,6 +49,7 @@ class AppFixtures extends Fixture
         ->setSummary("Résumé du livre ici Résumé du livre ici Résumé du livre ici Résumé du livre ici Résumé du livre ici Résumé du livre ici Résumé du livre ici Résumé du livre ici")
         ->setReleaseDate($date2)
         ->addCategory($category2)
+        ->setIsAvailable(true)
         ->setImage('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSN2BZludkjNUBX46SzMVg8l9MYjAuCjefpwb3Gdf8aGJKy3A73');
         $manager->persist($book2);
         $manager->flush();
@@ -58,6 +61,7 @@ class AppFixtures extends Fixture
         ->setSummary("Résumé du livre ici Résumé du livre ici Résumé du livre ici Résumé du livre ici Résumé du livre ici Résumé du livre ici Résumé du livre ici Résumé du livre ici")
         ->setReleaseDate($date3)
         ->addCategory($category2)
+        ->setIsAvailable(true)
         ->setImage('https://images-metadata-tea.s3.eu-central-1.amazonaws.com/0c/d1/metadata-image-65095778.jpeg');
         $manager->persist($book3);
         $manager->flush();
@@ -69,6 +73,7 @@ class AppFixtures extends Fixture
         ->setSummary("Résumé du livre ici Résumé du livre ici Résumé du livre ici Résumé du livre ici Résumé du livre ici Résumé du livre ici Résumé du livre ici Résumé du livre ici")
         ->setReleaseDate($date4)
         ->addCategory($category2)
+        ->setIsAvailable(true)
         ->setImage('https://assets.edenlivres.fr/medias/d3/16b51f464676389c38791ab4b7bdb4f8914de6.jpg?h=-&w=200');
         $manager->persist($book4);
         $manager->flush();
@@ -81,5 +86,16 @@ class AppFixtures extends Fixture
             $manager->persist($stateBooking);
             $manager->flush();
         }
+
+        // Création d'un user
+        $user = new User();
+        $user->setEmail("test@gmail.com")
+        ->setPassword("123")
+        ->setFirstname("test")
+        ->setLastname("test")
+        ->setTel("0692123456")
+        ->setRoles(["ROLE_ADMIN"]);
+        $manager->persist($user);
+        $manager->flush();
     }
 }
