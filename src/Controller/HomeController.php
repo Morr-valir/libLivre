@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class HomeController extends AbstractController
-{    
+{
     private $categoryRepository;
     private $bookRepository;
 
@@ -18,7 +18,7 @@ class HomeController extends AbstractController
         $this->categoryRepository = $categoryRepository;
         $this->bookRepository = $bookRepository;
     }
-    
+
     #[Route('/', name: 'app_home')]
     public function index(): Response
     {
@@ -31,13 +31,13 @@ class HomeController extends AbstractController
 
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController',
-            "categories" => $categories,
-            "books" => $books
+            'categories' => $categories,
+            'books' => $books
         ]);
     }
 
 
-    #[Route('/boutique', name:'app_boutique')]
+    #[Route('/boutique', name: 'app_boutique')]
     public function boutique(): Response
     {
         // Récupérer tout les Book
@@ -45,7 +45,7 @@ class HomeController extends AbstractController
 
         return $this->render('home/boutique.html.twig', [
             'controller_name' => 'HomeController',
-            "books" => $books
+            'books' => $books
 
         ]);
     }
