@@ -17,12 +17,15 @@
           <a class="nav-link" href="#" tabindex="-1">Contact</a>
         </li>
       </ul>
-      <form class="d-flex align-items-center">
-        {# <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"> #}
-        <a href="#" aria-label="connection utilisateur" class="text-light">
-          <i class="fs-3 bi bi-person-circle"></i>        
-        </a>
-        <a class="btn btn-success" href="{{ path('app_login') }}">Se connecter</a>
+      <form class="d-flex align-items-center gap-3">
+        {% if app.user %}
+          <p class="mb-0">Connecter en tant que : {{app.user}}</p>
+          <a href="#" aria-label="connection utilisateur" class="text-light">
+            <i class="fs-3 bi bi-person-circle"></i>        
+          </a>
+        {% else %}
+        <a class="btn btn-success" href="{{ path('app_login') }}">Se connecter</a>          
+        {% endif %}
       </form>
     </div>
   </div>
