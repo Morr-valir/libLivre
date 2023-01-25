@@ -22,12 +22,9 @@ class HomeController extends AbstractController
     #[Route('/', name: 'app_home')]
     public function index(): Response
     {
-        // Récupérer les Category
         $categories = $this->categoryRepository->findAll();
 
-        // Récupérer tout les Book
         $books = $this->bookRepository->recentBook();
-
 
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController',
@@ -37,16 +34,14 @@ class HomeController extends AbstractController
     }
 
 
-    #[Route('/boutique', name: 'app_boutique')]
-    public function boutique(): Response
+    #[Route('/shop', name: 'app_shop')]
+    public function shop(): Response
     {
-        // Récupérer tout les Book
         $books = $this->bookRepository->findAll();
 
-        return $this->render('home/boutique.html.twig', [
+        return $this->render('home/shop.html.twig', [
             'controller_name' => 'HomeController',
             'books' => $books
-
         ]);
     }
 }
