@@ -15,6 +15,12 @@ html, body{
     padding-top: 25px;
     background: #ebebeb;
 }
+// playout page main-content
+.main-content{
+    &-login, &-register{
+        height: 100%
+    }
+}
 //home import 
 @import './components/navbar/navbar';
 @import './components/slider/slider';

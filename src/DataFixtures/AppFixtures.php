@@ -90,7 +90,7 @@ class AppFixtures extends Fixture
         // Création d'un user
         $user = new User();
         $user->setEmail("test@gmail.com")
-            ->setPassword("123")
+            ->setPassword('$2y$13$BKnERN.KtvSim4JgJJc1nuIJAOJL.2JrDDjxpGQbivdEOgelYhxG2')
             ->setFirstname("test")
             ->setLastname("test")
             ->setTel("0692123456")

@@ -35,7 +35,7 @@ class SingleController extends AbstractController
             ->setUser($user)
             ->addBook($book)
             ->setCreatedAt(new DateTimeImmutable("now"))
-            ->setState($stateBookingRepository->find(29));
+            ->setState($stateBookingRepository->stateSelected("Reservé"));
 
         $em->persist($booking);
         $em->flush();
