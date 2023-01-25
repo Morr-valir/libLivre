@@ -35,8 +35,6 @@ class HomeController extends AbstractController
             'books' => $books
         ]);
     }
-
-
     #[Route('/boutique', name: 'app_boutique')]
     public function boutique(): Response
     {
