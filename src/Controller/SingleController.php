@@ -33,20 +33,17 @@ class SingleController extends AbstractController
     }
 
     #[Route('/single/addOrder/{id}', name: "app_single_add_order")]
-    public function addOrder(Book $book, BookingRepository $bookingRepository, UserRepository $userRepository, EntityManagerInterface $em, StateBookingRepository $stateBookingRepository): Response
+    public function addOrder(Book $book, BookingRepository $bookingRepository, EntityManagerInterface $em, StateBookingRepository $stateBookingRepository): Response
     {
-        // Récupérer un user
-        $user = $userRepository->find(1);
 
         // Reference du Booking (idbook + nbAlea)
         $booking = new Booking();
-        $booking->setReference($user->getId() . "-" . $book->getId())
-            ->setUserId($user)
+        $booking->setReference($this->getUser()->getId() . "-" . $book->getId())
+            ->setUserId($this->getUser())
             ->addBook($book)
             ->setCreatedAt(new DateTimeImmutable("now"))
-            ->setState($stateBookingRepository->find(29));
+            ->setState($stateBookingRepository->stateSelected("Reservé"));
 
-        // dd($booking);
         $em->persist($booking);
         $em->flush();
 

@@ -39,6 +39,15 @@ class StateBookingRepository extends ServiceEntityRepository
         }
     }
 
+    public function stateSelected(String $value): StateBooking
+    {
+        return $this->createQueryBuilder("s")
+        ->andWhere("s.name = :val")
+        ->setParameter("val", $value)
+        ->getQuery()
+        ->getSingleResult();
+    }
+
 //    /**
 //     * @return StateBooking[] Returns an array of StateBooking objects
 //     */
