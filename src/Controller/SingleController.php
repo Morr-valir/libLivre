@@ -4,18 +4,12 @@ namespace App\Controller;
 
 use App\Entity\Book;
 use App\Entity\Booking;
-use Doctrine\ORM\EntityManager;
 use App\Repository\BookRepository;
-use App\Repository\BookingRepository;
 use App\Repository\StateBookingRepository;
-use App\Repository\UserRepository;
-use DateTime;
 use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class SingleController extends AbstractController
@@ -23,8 +17,11 @@ class SingleController extends AbstractController
     #[Route('/single/{id}', name: 'app_single')]
     public function index(int $id, BookRepository $bookRepository): Response
     {
-        // Récupérer les informations du Book cliqué
-        $book = $bookRepository->findById($id);
+        try {
+            $book = $bookRepository->findById($id);
+        } catch (\Throwable $th) {
+            $this->redirectToRoute('error404');
+        }
 
         return $this->render('single/index.html.twig', [
             'controller_name' => 'SingleController',
@@ -33,13 +30,13 @@ class SingleController extends AbstractController
     }
 
     #[Route('/single/addOrder/{id}', name: "app_single_add_order")]
-    public function addOrder(Book $book, BookingRepository $bookingRepository, EntityManagerInterface $em, StateBookingRepository $stateBookingRepository): Response
+    public function addOrder(Book $book, EntityManagerInterface $em, StateBookingRepository $stateBookingRepository): Response
     {
+        $user = $this->getUser();
 
-        // Reference du Booking (idbook + nbAlea)
         $booking = new Booking();
-        $booking->setReference($this->getUser()->getId() . "-" . $book->getId())
-            ->setUserId($this->getUser())
+        $booking->setReference($user->getId() . "-" . $book->getId())
+            ->setUser($user)
             ->addBook($book)
             ->setCreatedAt(new DateTimeImmutable("now"))
             ->setState($stateBookingRepository->stateSelected("Reservé"));

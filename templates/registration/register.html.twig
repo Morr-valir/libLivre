@@ -5,9 +5,9 @@
 {% block body %}
 <header class="Header">
 {% include "./components/navbar/navbar.html.twig" %}
-{% include "./components/slider/slider.html.twig" %}
+{# {% include "./components/slider/slider.html.twig" %} #}
 </header>
-<main class="main-content-register pt-5">
+<main class="main-content flex-grow-1 py-5">
     <h1 class="text-center mb-3">Formulaire d'inscription</h1>
     <section class="d-flex justify-content-center align-items-center">
         {{ form_start(registrationForm) }}
