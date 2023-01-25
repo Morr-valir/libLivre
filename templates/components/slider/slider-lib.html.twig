@@ -1,18 +1,19 @@
 <section class="d-flex justify-content-aroundr mb-5">
+    {# Afficher les categories #}
+
+    {% for category in categories %}
     <article class="card-lib">
         <figure>
             <img src="https://www.lalibrairie.com/cache/img/selections/prod-1573-xs.webp" alt="séléction 1">
         </figure>
         <div>
-        <a class="card-lib-link" href="#">Séléction Romantique</a>
+        <a class="card-lib-link" href="#">{{category.name}}</a>
         </div>
     </article>
-    <article class="card-lib">
-        <figure>
+
+    {% endfor %}
+    
+        {# <figure>
             <img src="https://www.lalibrairie.com/cache/img/selections/prod-1566-xs.webp" alt="séléction 1">
-        </figure>
-        <div>
-        <a class="card-lib-link" href="#">Séléction Aventure & découverte</a>
-        </div>
-    </article>
+        </figure> #}
 </section>

@@ -30,7 +30,7 @@ class AppFixtures extends Fixture
 
         // Création des 2 Book
         $book1 = new Book();
-        $date1 = new DateTime('06/04/2014');
+        $date1 = new DateTime('08/04/2000');
         $book1->setName("Harry Potter")
         ->setAuthor("Nom de l'auteur")
         ->setSummary("Résumé du livre ici Résumé du livre ici Résumé du livre ici Résumé du livre ici Résumé du livre ici Résumé du livre ici Résumé du livre ici Résumé du livre ici")
@@ -49,6 +49,28 @@ class AppFixtures extends Fixture
         ->addCategory($category2)
         ->setImage('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSN2BZludkjNUBX46SzMVg8l9MYjAuCjefpwb3Gdf8aGJKy3A73');
         $manager->persist($book2);
+        $manager->flush();
+
+        $book3 = new Book();
+        $date3 = new DateTime('07/05/2012');
+        $book3->setName("007")
+        ->setAuthor("Nom de l'auteur 3")
+        ->setSummary("Résumé du livre ici Résumé du livre ici Résumé du livre ici Résumé du livre ici Résumé du livre ici Résumé du livre ici Résumé du livre ici Résumé du livre ici")
+        ->setReleaseDate($date3)
+        ->addCategory($category2)
+        ->setImage('https://images-metadata-tea.s3.eu-central-1.amazonaws.com/0c/d1/metadata-image-65095778.jpeg');
+        $manager->persist($book3);
+        $manager->flush();
+
+        $book4 = new Book();
+        $date4 = new DateTime('10/04/2020');
+        $book4->setName("Peter Pan")
+        ->setAuthor("Nom de l'auteur 2")
+        ->setSummary("Résumé du livre ici Résumé du livre ici Résumé du livre ici Résumé du livre ici Résumé du livre ici Résumé du livre ici Résumé du livre ici Résumé du livre ici")
+        ->setReleaseDate($date4)
+        ->addCategory($category2)
+        ->setImage('https://assets.edenlivres.fr/medias/d3/16b51f464676389c38791ab4b7bdb4f8914de6.jpg?h=-&w=200');
+        $manager->persist($book4);
         $manager->flush();
 
         // Création des State

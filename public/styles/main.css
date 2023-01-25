@@ -58,6 +58,13 @@ html, body {
   justify-content: space-evenly;
 }
 
+.imageItem {
+  width: 200px;
+  height: 200px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
 .btn-vert {
   font-family: "DM Serif Display", serif;
   color: #23645e;
@@ -80,4 +87,11 @@ footer {
 
 .info-item {
   gap: 15px;
+}
+
+.imageSingle {
+  width: 400px;
+  height: 400px;
+  -o-object-fit: contain;
+     object-fit: contain;
 }/*# sourceMappingURL=main.css.map */

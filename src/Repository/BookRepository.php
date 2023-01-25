@@ -39,6 +39,28 @@ class BookRepository extends ServiceEntityRepository
         }
     }
 
+    // Récupère les 3 livres les plus récent
+    public function recentBook(): array
+    {
+        return $this->createQueryBuilder("b")
+        ->orderBy("b.releaseDate", "DESC")
+        ->setMaxResults(3)
+        ->getQuery()
+        ->getResult();
+    }
+
+    // Récupérer un Book par id
+    public function findById(int $id): Book
+    {
+        return $this->createQueryBuilder("b")
+        ->andWhere("b.id = :id")
+        ->setParameter("id", $id)
+        ->getQuery()
+        ->getSingleResult();
+    }
+
+
+
 //    /**
 //     * @return Book[] Returns an array of Book objects
 //     */
