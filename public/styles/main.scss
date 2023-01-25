@@ -1,27 +1,23 @@
 //import font
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=DM+Serif+Display&display=swap');
-html, body{
+html,
+body {
     height: 100%;
     font-family: 'DM Sans', sans-serif;
 }
 
 //Class utilitaire font
-.dm-font{
+.dm-font {
     font-family: 'DM Serif Display', serif;
 }
 
 // color
-.main-content{
+.main-content {
     padding-top: 25px;
     background: #ebebeb;
 }
-// playout page main-content
-.main-content{
-    &-login, &-register{
-        height: 100%
-    }
-}
-//home import 
+
+//home import
 @import './components/navbar/navbar';
 @import './components/slider/slider';
 @import './components/card/.cardLib';

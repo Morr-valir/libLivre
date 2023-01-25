@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=DM+Serif+Display&display=swap");
-html, body {
+html,
+body {
   height: 100%;
   font-family: "DM Sans", sans-serif;
 }
@@ -11,10 +12,6 @@ html, body {
 .main-content {
   padding-top: 25px;
   background: #ebebeb;
-}
-
-.main-content-login, .main-content-register {
-  height: 100%;
 }
 
 .second-nav {
@@ -91,6 +88,8 @@ html, body {
 
 footer {
   background: #00211e;
+  position: relative;
+  bottom: 0;
 }
 
 .info-item {

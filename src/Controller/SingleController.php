@@ -17,7 +17,11 @@ class SingleController extends AbstractController
     #[Route('/single/{id}', name: 'app_single')]
     public function index(int $id, BookRepository $bookRepository): Response
     {
-        $book = $bookRepository->findById($id);
+        try {
+            $book = $bookRepository->findById($id);
+        } catch (\Throwable $th) {
+            $this->redirectToRoute('error404');
+        }
 
         return $this->render('single/index.html.twig', [
             'controller_name' => 'SingleController',
