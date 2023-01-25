@@ -34,6 +34,9 @@ class Book
     #[ORM\Column(length: 255)]
     private ?string $image = null;
 
+    #[ORM\Column]
+    private ?bool $isAvailable = null;
+
     public function __construct()
     {
         $this->categories = new ArrayCollection();
@@ -129,6 +132,18 @@ class Book
     public function setImage(string $image): self
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    public function isIsAvailable(): ?bool
+    {
+        return $this->isAvailable;
+    }
+
+    public function setIsAvailable(bool $isAvailable): self
+    {
+        $this->isAvailable = $isAvailable;
 
         return $this;
     }
