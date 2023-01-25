@@ -18,16 +18,21 @@
     background: white;
     padding: 15px;
     border-radius: 8px;
+    .card-figure{
+        max-height: 200px;
+        max-width: 200px;
+        overflow: hidden;
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    }
+
 }
 .card-item-content{
     margin-left: 25px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-}
-
-.imageItem{
-    width: 200px;
-    height: 200px;
-    object-fit: contain;
 }
