@@ -35,7 +35,7 @@ class BookCrudController extends AbstractCrudController
             TextField::new('author'),
             ImageField::new('image')->setBasePath(self::BASE_PATH)->setUploadDir(self::UPLOAD_DIR)->setSortable(false),
             TextEditorField::new('summary'),
-            DateField::new('relaseDate'),
+            DateField::new('releaseDate'),
             AssociationField::new('categories')
             
         ];
