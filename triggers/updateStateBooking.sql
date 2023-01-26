@@ -1,4 +1,6 @@
-CREATE TRIGGER `updateStateBooking` AFTER UPDATE ON `booking`
+DELIMITER //
+
+CREATE TRIGGER `updateStateBooking2` AFTER UPDATE ON `booking`
  FOR EACH ROW BEGIN
 SET @stateName := (SELECT state_booking.name FROM state_booking WHERE state_booking.id = NEW.state_id);
 
@@ -24,3 +26,7 @@ END IF;
 
 
 END
+
+//
+
+DELIMITER ;
