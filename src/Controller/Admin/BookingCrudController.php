@@ -30,7 +30,7 @@ class BookingCrudController extends AbstractCrudController
             TextField::new('reference','Numéro de réservation')->setFormTypeOption('disabled','disabled'),
             DateField::new('created_At','Date de création')->setFormTypeOption('disabled','disabled'),
             AssociationField::new('state','Etat de réservation'),
-            AssociationField::new('userId')->setFormTypeOption('disabled','disabled'),
+            AssociationField::new('user')->setFormTypeOption('disabled','disabled'),
             AssociationField::new('books'),
         ];
     }

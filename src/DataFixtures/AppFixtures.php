@@ -79,7 +79,7 @@ class AppFixtures extends Fixture
         $manager->flush();
 
         // Création des State
-        $states = ["Reservé", "En cours", "Emprunté", "Terminé"];
+        $states = ["Reservé", "En cours", "Emprunté", "Terminé","Annulé"];
         foreach ($states as $state) {
             $stateBooking = new StateBooking();
             $stateBooking->setName($state);
