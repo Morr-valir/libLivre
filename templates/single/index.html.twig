@@ -6,7 +6,11 @@
 <header class="Header">
 {% include "./components/navbar/navbar.html.twig" %}
 {% include "./components/navbar/homeMenu.html.twig" %}
+{% for message in app.flashes('info') %}
+    <div class="alert alert-success" role="alert">{{message}}</div>
+{% endfor %}
 </header>
+
 <main class="main-content flex-grow-1">
     <div class="container">
     <section class="info-item row mb-5 mt-4">
