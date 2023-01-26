@@ -9,11 +9,11 @@
 </header>
 <main class="main-content flex-grow-1">
     <div class="container">
-    <section class="info-item d-flex mb-5 mt-4">
-        <figure class="mr-4">
+    <section class="info-item row mb-5 mt-4">
+        <figure class="mr-4 col">
             <img src="{{book.image}}" alt="couverture livre" class="imageSingle">
         </figure>
-        <div class="description">
+        <div class="description col">
             <h1 class="h4 dm-font">{{book.name}}</h1>
             <p>de : {{book.author}}</p>
             {# Si le book est disponible #}
@@ -32,7 +32,7 @@
             
         </div>
     </section>
-    <section class="description-book">
+    <section class="description-book row">
         <h2 class="h3 dm-font">Quatrième de couverture</h2>
         <p>
             {{book.summary}}
