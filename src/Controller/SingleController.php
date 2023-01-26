@@ -14,13 +14,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class SingleController extends AbstractController
 {
-    #[Route('/single/{id}', name: 'app_single')]
+    #[Route('/single/{id}', name: 'app_single', condition: "params['id'] matches '/[0-9]+/'")]
     public function index(int $id, BookRepository $bookRepository): Response
     {
         try {
             $book = $bookRepository->findById($id);
         } catch (\Throwable $th) {
-            $this->redirectToRoute('error404');
+            throw $this->createNotFoundException('Ce livre n\'existe pas');
         }
 
         return $this->render('single/index.html.twig', [
