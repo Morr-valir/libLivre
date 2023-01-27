@@ -17,7 +17,7 @@
         <figure class="col-sm-6 col-md-5 col-lg-4 text-center text-sm-start">
             <img src="{{book.image}}" alt="couverture livre" class="imageSingle">
         </figure>
-        <div class="col-sm-6 col-md-7 col-lg-8 mx-4 mx-sm-0">
+        <div class="col-sm-6 col-md-7 col-lg-8 ps-4 ps-sm-0">
             <h1 class="h4 dm-font">{{book.name}}</h1>
             <p>de : {{book.author}}</p>
 
@@ -27,14 +27,19 @@
             <p>Disponibilité: Hors stock</p>
             {% endif %}
 
-            {% if book.isAvailable == true%}
-            <a href="{{ path('app_single_add_order',{ 'id': book.id }) }}" class="btn btn-outline-success">Commander</a>
+            {% if app.user %}
+                {% if book.isAvailable == true%}
+                <a href="{{ path('app_single_add_order',{ 'id': book.id }) }}" class="btn btn-outline-success">Réserver</a>
+                {% else %}
+                <button class="btn btn-outline-danger">Non disponible</button>
+                {% endif %}
             {% else %}
-            <button class="btn btn-outline-danger" disabled>Non disponible</button>
+                <a href="#" class="btn btn-outline-success disabled">Réserver</a>
             {% endif %}
+            
         </div>
     </section>
-    <section class="description-book row mx-3 mx-sm-0">
+    <section class="description-book row ps-3 ps-sm-0">
         <h2 class="h3 dm-font">Quatrième de couverture</h2>
         <p>
             {{book.summary}}
