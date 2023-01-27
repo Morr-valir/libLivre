@@ -22,6 +22,7 @@
         <div class="dropdown">
           <span class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">{{app.user}}</span>
           <ul class="dropdown-menu dropdown-menu dropdown-menu-sm-end">
+            <li><a href="{{ path('app_user') }}" class="dropdown-item">Mon profile</a></li>
             <li><a href="{{ path('admin.index') }}" class="dropdown-item">Administration</a></li>
             <li><a href="{{ path('app_logout') }}" class="dropdown-item">Se déconnecter</a></li>
           </ul>
