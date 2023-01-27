@@ -38,6 +38,19 @@ class BookingRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+    /**
+     * @Morr-valir
+     * @author Matthieu Picard
+     * @return Booking[] for User granted
+     */
+    public function findBookingUser(int $user): array
+    {
+        return $this->createQueryBuilder("u")
+        ->andWhere("u.user = :user")
+        ->setParameter("user", $user)
+        ->getQuery()
+        ->getResult();
+    }
 
 //    /**
 //     * @return Booking[] Returns an array of Booking objects

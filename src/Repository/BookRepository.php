@@ -38,8 +38,10 @@ class BookRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
-
-    // Récupère les 3 livres les plus récent
+    /**
+     * @Azioogh
+     * @return book Array[] Returns an array of book objects Max 3
+     */
     public function recentBook(): array
     {
         return $this->createQueryBuilder("b")
