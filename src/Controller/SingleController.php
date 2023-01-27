@@ -14,7 +14,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class SingleController extends AbstractController
 {
+<<<<<<< Updated upstream
     #[Route('/single/{id}', name: 'app_single')]
+=======
+    #[Route('/{title}/{id}', name: 'app_single', condition: "params['id'] matches '/[0-9]+/'")]
+>>>>>>> Stashed changes
     public function index(int $id, BookRepository $bookRepository): Response
     {
         try {
