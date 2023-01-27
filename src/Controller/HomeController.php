@@ -25,7 +25,6 @@ class HomeController extends AbstractController
     public function index(): Response
     {
         $categories = $this->categoryRepository->findAll();
-
         $books = $this->bookRepository->recentBook();
 
         return $this->render('home/index.html.twig', [
