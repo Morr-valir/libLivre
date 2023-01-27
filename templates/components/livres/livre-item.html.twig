@@ -8,7 +8,7 @@
         <div class="card-item-content text-center text-md-start">
             <h3 class="h5 fw-bold dm-font">{{book.name}} <span class="h6 fw-light fst-italic">{{book.author}}</span></h3>
             <p class="card-item-description mb-4">
-                {{book.summary}}
+                {{ book.summary|u.truncate(100, '...') }}
             </p>
             <a href="{{ path('app_single',{ 'id': book.id,'title': book.name }) }}" class="btn bg-vert m-md-0 m-auto">Voir plus</a>
         </div>
