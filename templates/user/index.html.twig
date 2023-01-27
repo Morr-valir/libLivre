@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bonjour {{ app.user.lastname }}{% endblock %}
+
+{% block body %}
+<header class="Header">
+{% include "./components/navbar/navbar.html.twig" %}
+</header>
+<main class="main-content flex-grow-1">
+    <div class="container">
+        <h1 class="h4 mb-4 dm-font">Mes informations</h1>
+        <p>Nom : {{ app.user.lastname }}</p>
+        <p>Prénom : {{ app.user.firstname }}</p>
+        <p>Numéro de téléphone : {{ app.user.tel }}</p>
+            {% if app.user.birthDate is empty %}
+                <p>Date de Naissance : Non indiquée</p>                    
+                    {% else %}
+                <p>Date de Naissance : {{ app.user.birthDate |date("l d F") }}</p>                    
+            {% endif %}
+        <p>E-mail : {{ app.user.email }}</p>
+        <div>
+            <h2 class="h4 dm-font">Mes réservations</h2>
+                    {% for booking in ArrayBooking %}
+                    <div class=" d-flex gap-3 p-3 m-2 bg-light w-100 bookingsDiv">
+                        <figure>
+                            <img src="{{booking.books[0].image}}" alt="{{booking.books[0]}}" class="imageSingle">
+                        </figure>
+                        <div class="content">
+                            <p>Référence de commande : {{booking.reference}}</p>
+                            {# <p>Date de création {{booking.created_At|date()}}</p> #}
+                            <p>Adresse mail rataché : {{booking.user.email}}</p>
+                            <p>Livre réservé: {{booking.books[0]}}</p>
+                        </div>
+                        <div class="buttonDiv">
+                            <button class="btn btn-outline-danger">Annuler<button>
+                        </div>
+                    </div>
+                    {% endfor %}
+        </div>
+    </div>
+</main>
+{% endblock %}
