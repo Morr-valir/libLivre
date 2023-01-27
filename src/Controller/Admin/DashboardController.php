@@ -31,17 +31,36 @@ class DashboardController extends AbstractDashboardController
 
     public function configureMenuItems(): iterable
     {
-        yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
-        yield MenuItem::section('Gestion des livres');
-        yield MenuItem::linkToCrud('livre','fas fa-bowl-rice',Book::class);
-        yield MenuItem::linkToCrud('catégorie','fas fa-bowl-rice',Category::class);
-        yield MenuItem::section('Gestion des réservation');
-        yield MenuItem::linkToCrud('Etat réservation','fas fa-bowl-rice',StateBooking::class);
-        yield MenuItem::linkToCrud('Réservation','fas fa-bowl-rice',Booking::class);
-        yield MenuItem::section('Gestion utilisateur');
-        yield MenuItem::linkToCrud('Utilisateur','fas fa-bowl-rice',User::class);
-        yield MenuItem::section('Affichage des ancienne réservation');
-        yield MenuItem::linkToCrud('log réservation','fas fa-bowl-rice',Log::class);
-        // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
+        if ($this->isGranted('ROLE_ADMIN'))
+            {
+                return
+                    [
+                        yield MenuItem::linkToDashboard('Dashboard administrateur', 'fa fa-home'),
+                        yield MenuItem::section('Gestion des livres'),
+                        yield MenuItem::linkToCrud('livre','fas fa-bowl-rice',Book::class),
+                        yield MenuItem::linkToCrud('catégorie','fas fa-bowl-rice',Category::class),
+                        yield MenuItem::section('Gestion des réservation'),
+                        yield MenuItem::linkToCrud('Etat réservation','fas fa-bowl-rice',StateBooking::class),
+                        yield MenuItem::linkToCrud('Réservation','fas fa-bowl-rice',Booking::class),
+                        yield MenuItem::section('Gestion utilisateur'),
+                        yield MenuItem::linkToCrud('Utilisateur','fas fa-bowl-rice',User::class),
+                        yield MenuItem::section('Affichage des ancienne réservation'),
+                        yield MenuItem::linkToCrud('log réservation','fas fa-bowl-rice',Log::class),
+                    ];
+            }
+            if ($this->isGranted('ROLE_BIBLI'))
+                {
+                    return
+                        [
+                            yield MenuItem::linkToDashboard('Administration de lib livre', 'fa fa-home'),
+                            yield MenuItem::section('Gestion des livres'),
+                            yield MenuItem::linkToCrud('livre','fas fa-bowl-rice',Book::class),
+                            yield MenuItem::linkToCrud('catégorie','fas fa-bowl-rice',Category::class),
+                            yield MenuItem::section('Gestion des réservation'),
+                            yield MenuItem::linkToCrud('Réservation','fas fa-bowl-rice',Booking::class),
+                            yield MenuItem::section('Historique des ancienne réservation'),
+                            yield MenuItem::linkToCrud('log réservation','fas fa-bowl-rice',Log::class),
+                        ];
+                }
     }
 }
