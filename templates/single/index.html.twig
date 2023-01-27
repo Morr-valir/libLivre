@@ -29,7 +29,7 @@
 
             {% if app.user %}
                 {% if book.isAvailable == true%}
-                <a href="{{ path('app_single_add_order',{ 'id': book.id }) }}" class="btn btn-outline-success">Réserver</a>
+                <a href="{{ path('app_single_add_order',{ 'id': book.id, 'title': book.name }) }}" class="btn btn-outline-success">Réserver</a>
                 {% else %}
                 <button class="btn btn-outline-danger">Non disponible</button>
                 {% endif %}

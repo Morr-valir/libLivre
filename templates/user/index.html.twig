@@ -41,27 +41,29 @@
             <button type="submit" class="btn bg-vert my-3">Modifier</button>
         {{ form_end(form) }}
 
-        <div>
+        <div class="mb-3">
             <h2 class="h4 dm-font">Mes réservations</h2>
-                    {% for booking in ArrayBooking %}
-                    <div class=" d-flex gap-3 p-3 m-2 bg-light w-100 bookingsDiv">
-                        <figure>
-                            <img src="{{booking.books[0].image}}" alt="{{booking.books[0]}}" class="imageSingle">
-                        </figure>
-                        <div class="content">
-                            <p>Référence de commande : {{booking.reference}}</p>
-                            {# <p>Date de création {{booking.created_At|date()}}</p> #}
-                            <p>Adresse mail rataché : {{booking.user.email}}</p>
-                            <p>Livre réservé: {{booking.books[0]}}</p>
-                        </div>
-                        <div class="buttonDiv">
-                        <a href="{{ path('app_user_delete_booking',{ 'id': booking.id }) }}">
-                            Annuler
-                        </a>
-
-                        </div>
+            {% if ArrayBooking|length == 0 %}
+                <p>Pas de réservation pour le moment</p>
+            {% endif %}
+            {% for booking in ArrayBooking %}
+            <div class="card">
+                <div class="card-body row">
+                    <figure class="col-sm-2">
+                        <img src="{{booking.books[0].image}}" alt="{{booking.books[0]}}" class="w-100">
+                    </figure>
+                    <div class="col-sm-10">
+                        <p>Référence de commande : {{booking.reference}}</p>
+                        <p>Réservé le {{booking.getCreatedAt|date("d/m/Y")}}</p>
+                        {# <p>Adresse mail rataché : {{booking.user.email}}</p> #}
+                        <p>Titre: {{booking.books[0]}}</p>
                     </div>
-                    {% endfor %}
+                </div>
+                <div class="card-footer">
+                    <a href="{{ path('app_user_delete_booking',{ 'id': booking.id }) }}" class="btn btn-danger">Annuler</a>
+                </div>
+            </div>
+            {% endfor %}
         </div>
     </div>
 </main>

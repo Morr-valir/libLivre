@@ -7,25 +7,3 @@
     height: 300px;
     object-fit: contain;
 }
-
-.buttonDiv{
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
-    width: 45%;
-}
-
-
-
-@media screen and (max-width:767px) {
-    .bookingsDiv{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }    
-
-    .buttonDiv{
-        justify-content: center;
-    }
-}

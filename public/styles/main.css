@@ -101,23 +101,4 @@ footer {
   height: 300px;
   -o-object-fit: contain;
      object-fit: contain;
-}
-
-.buttonDiv {
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
-  width: 45%;
-}
-
-@media screen and (max-width: 767px) {
-  .bookingsDiv {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  .buttonDiv {
-    justify-content: center;
-  }
 }/*# sourceMappingURL=main.css.map */

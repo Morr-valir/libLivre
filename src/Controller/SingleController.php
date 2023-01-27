@@ -30,7 +30,7 @@ class SingleController extends AbstractController
         ]);
     }
 
-    #[Route('/single/addOrder/{id}', name: "app_single_add_order")]
+    #[Route('/{title}/addOrder/{id}', name: "app_single_add_order")]
     public function addOrder(Book $book, EntityManagerInterface $em, StateBookingRepository $stateBookingRepository): Response
     {
         $user = $this->getUser();
@@ -45,8 +45,8 @@ class SingleController extends AbstractController
         $em->persist($booking);
         $em->flush();
 
-        $this->addFlash('info','Message info');
+        $this->addFlash('info', 'Message info');
 
-        return $this->redirectToRoute('app_single', ['id' => $book->getId()]);
+        return $this->redirectToRoute('app_single', ['id' => $book->getId(), 'title' => $book->getName()]);
     }
 }
