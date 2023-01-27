@@ -1,19 +1,12 @@
-<section class="d-flex justify-content-around flex-wrap mb-5">
-    {# Afficher les categories #}
-
+<section class="d-flex overflow-auto mb-4">
     {% for category in categories %}
     <article class="card-lib">
         <figure>
             <img src="https://www.lalibrairie.com/cache/img/selections/prod-1573-xs.webp" alt="séléction 1">
         </figure>
         <div>
-        <a class="card-lib-link" href="#">{{category.name}}</a>
+            <a class="card-lib-link" href="#">{{category.name}}</a>
         </div>
     </article>
-
     {% endfor %}
-    
-        {# <figure>
-            <img src="https://www.lalibrairie.com/cache/img/selections/prod-1566-xs.webp" alt="séléction 1">
-        </figure> #}
 </section>
