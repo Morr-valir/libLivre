@@ -19,10 +19,14 @@
       </ul>
       <form class="d-flex align-items-center gap-3">
         {% if app.user %}
-          <p class="mb-0">Connecter en tant que : {{app.user}}</p>
-          <a href="#" aria-label="connection utilisateur" class="text-light">
-            <i class="fs-3 bi bi-person-circle"></i>        
-          </a>
+        <div class="dropdown">
+          <span class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">{{app.user}}</span>
+          <ul class="dropdown-menu dropdown-menu dropdown-menu-sm-end">
+            <li><a href="{{ path('app_user') }}" class="dropdown-item">Mon profile</a></li>
+            <li><a href="{{ path('admin.index') }}" class="dropdown-item">Administration</a></li>
+            <li><a href="{{ path('app_logout') }}" class="dropdown-item">Se déconnecter</a></li>
+          </ul>
+        </div>
         {% else %}
         <a class="btn btn-success" href="{{ path('app_login') }}">Se connecter</a>          
         {% endif %}
