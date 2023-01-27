@@ -8,7 +8,7 @@
 </header>
 <main class="main-content flex-grow-1">
     <div class="container">
-        <h1 class="h4 mb-4 dm-font">Mes informations</h1>
+        {# <h1 class="h4 mb-4 dm-font">Mes informations</h1>
         <p>Nom : {{ app.user.lastname }}</p>
         <p>Prénom : {{ app.user.firstname }}</p>
         <p>Numéro de téléphone : {{ app.user.tel }}</p>
@@ -17,7 +17,19 @@
                     {% else %}
                 <p>Date de Naissance : {{ app.user.birthDate |date("l d F") }}</p>                    
             {% endif %}
-        <p>E-mail : {{ app.user.email }}</p>
+        <p>E-mail : {{ app.user.email }}</p> #}
+
+        {# Formulaire pour modifier donnée user #}
+        {{ form_start(form) }}
+            
+            <button type="submit">Modifier</button>
+        {{ form_end(form) }}
+
+
+
+        {# ===================================== #}
+
+
         <div>
             <h2 class="h4 dm-font">Mes réservations</h2>
                     {% for booking in ArrayBooking %}
@@ -32,7 +44,10 @@
                             <p>Livre réservé: {{booking.books[0]}}</p>
                         </div>
                         <div class="buttonDiv">
-                            <button class="btn btn-outline-danger">Annuler<button>
+                        <a href="{{ path('app_user_delete_booking',{ 'id': booking.id }) }}">
+                            Annuler
+                        </a>
+
                         </div>
                     </div>
                     {% endfor %}
