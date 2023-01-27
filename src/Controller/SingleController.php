@@ -15,7 +15,7 @@ use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 
 class SingleController extends AbstractController
 {
-    #[Route('/single/{id}', name: 'app_single', condition: "params['id'] matches '/[0-9]+/'")]
+    #[Route('/{title}/{id}', name: 'app_single', condition: "params['id'] matches '/[0-9]+/'")]
     public function index(int $id, BookRepository $bookRepository): Response
     {
         try {
