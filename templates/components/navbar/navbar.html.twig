@@ -20,8 +20,8 @@
       <form class="d-flex align-items-center gap-3">
         {% if app.user %}
         <div class="dropdown">
-          <span class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">{{app.user}}</span>
-          <ul class="dropdown-menu dropdown-menu-end">
+          <span class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">{{app.user}}</span>
+          <ul class="dropdown-menu dropdown-menu dropdown-menu-sm-end">
             <li><a href="{{ path('admin.index') }}" class="dropdown-item">Administration</a></li>
             <li><a href="{{ path('app_logout') }}" class="dropdown-item">Se déconnecter</a></li>
           </ul>
