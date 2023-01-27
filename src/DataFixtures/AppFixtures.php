@@ -232,21 +232,6 @@ class AppFixtures extends Fixture
         $manager->persist($book13);
         $manager->flush();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         // Création des State
         $states = ["Reservé", "En cours", "Emprunté", "Terminé","Annulé"];
         foreach ($states as $state) {
@@ -255,16 +240,35 @@ class AppFixtures extends Fixture
             $manager->persist($stateBooking);
             $manager->flush();
         }
-
         // Création d'un user
         $user = new User();
-        $user->setEmail("test@gmail.com")
+        $user->setEmail("admin@gmail.com")
             ->setPassword('$2y$13$BKnERN.KtvSim4JgJJc1nuIJAOJL.2JrDDjxpGQbivdEOgelYhxG2')
-            ->setFirstname("test")
-            ->setLastname("test")
+            ->setFirstname("Admin")
+            ->setLastname("Admin")
             ->setTel("0692123456")
             ->setRoles(["ROLE_ADMIN"]);
         $manager->persist($user);
+        $manager->flush();
+
+        $user2 = new User();
+        $user2->setEmail("matthieu@gmail.com")
+            ->setPassword('$2y$13$BKnERN.KtvSim4JgJJc1nuIJAOJL.2JrDDjxpGQbivdEOgelYhxG2')
+            ->setFirstname("matthieu")
+            ->setLastname("picard")
+            ->setTel("0692123456")
+            ->setRoles(["ROLE_BIBLI"]);
+        $manager->persist($user2);
+        $manager->flush();
+
+        $user3 = new User();
+        $user3->setEmail("user@gmail.com")
+            ->setPassword('$2y$13$BKnERN.KtvSim4JgJJc1nuIJAOJL.2JrDDjxpGQbivdEOgelYhxG2')
+            ->setFirstname("Patrick")
+            ->setLastname("Jean")
+            ->setTel("0692123456")
+            ->setRoles(["ROLE_USER"]);
+        $manager->persist($user3);
         $manager->flush();
     }
 }
