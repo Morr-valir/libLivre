@@ -1,0 +1,28 @@
+.navigation {
+    display: flex;
+    justify-content: center;
+}
+
+.navigation .pagination{
+    align-items: center;
+}
+
+.navigation .pagination span {
+    margin-right: 20%;
+}
+
+.navigation .pagination span.current{
+    padding: 4px 12px;
+    border-radius: 10px;
+    border-color: black;
+    border: 1px solid;
+}
+
+.navigation .pagination span.page a{
+    margin-right: 20%;
+    background-color: #23645E;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 10px;
+    text-decoration: none;
+}
