@@ -38,6 +38,7 @@ class BookRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+    
     /**
      * @Azioogh
      * @return book Array[] Returns an array of book objects Max 3
