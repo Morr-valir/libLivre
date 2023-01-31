@@ -70,7 +70,7 @@ class SingleController extends AbstractController
         $em->persist($booking);
         $em->flush();
 
-        $this->addFlash('info', 'Message info');
+        $this->addFlash('info', 'Votre livre à bien été réserver !');
 
         return $this->redirectToRoute('app_single', ['id' => $book->getId(), 'title' => $book->getName()]);
     } 
