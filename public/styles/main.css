@@ -130,4 +130,13 @@ footer {
   padding: 4px 12px;
   border-radius: 10px;
   text-decoration: none;
+}
+
+.page-item.active .page-link {
+  background-color: #23645e;
+  border-color: #23645e;
+}
+
+.navigation .pagination span {
+  margin-right: 0;
 }/*# sourceMappingURL=main.css.map */
