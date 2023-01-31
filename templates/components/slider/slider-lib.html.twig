@@ -2,10 +2,12 @@
     {% for category in categories %}
     <article class="card-lib">
         <figure>
+        <a href="{{ path('app_shop_category',{ 'id': category.id }) }}">
             <img src="https://www.lalibrairie.com/cache/img/selections/prod-1573-xs.webp" alt="séléction 1">
+            <a/>
         </figure>
         <div>
-            <a class="card-lib-link" href="#">{{category.name}}</a>
+            <a class="card-lib-link" href="{{ path('app_shop_category',{ 'id': category.id }) }}">{{category.name}}</a>
         </div>
     </article>
     {% endfor %}

@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Category;
 use App\Repository\BookRepository;
 use App\Repository\CategoryRepository;
 use Knp\Component\Pager\PaginatorInterface;
@@ -50,5 +51,5 @@ class HomeController extends AbstractController
             'controller_name' => 'HomeController',
             'books' => $books
         ]);
-    }
+    }  
 }
