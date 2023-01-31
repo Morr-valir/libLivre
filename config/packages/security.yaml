@@ -34,6 +34,7 @@ security:
             - { path: ^/admin, roles: ROLE_ADMIN }
             - { path: ^/admin, roles: ROLE_BIBLI }
             - { path: ^/profile, roles: ROLE_USER }
+            - { path: ^/*/addOrder/*, roles: ROLE_USER }
 
 when@test:
     security:
