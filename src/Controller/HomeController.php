@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Category;
 use App\Repository\BookRepository;
 use App\Repository\CategoryRepository;
 use Knp\Component\Pager\PaginatorInterface;
@@ -51,4 +52,27 @@ class HomeController extends AbstractController
             'books' => $books
         ]);
     }
+
+    #[Route('/shop/{id}', name: 'app_shop_category')]
+    public function bookByCategory(Category $category,PaginatorInterface $paginator, Request $request): Response
+    {
+        // Récupération des livre filtré par la catégorie selectionné
+        $data = $this->bookRepository->findByCategory($category->getId());
+
+        // Pagination
+        $books = $paginator->paginate(
+            $data,
+            $request->query->getInt('page',1),
+            6
+        );
+
+
+        return $this->render('home/shop.html.twig', [
+            'controller_name' => 'HomeController',
+            'books' => $books,
+            'category' => $category
+        ]);
+    }
+
+    
 }

@@ -3,8 +3,8 @@
 namespace App\Repository;
 
 use App\Entity\Book;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @extends ServiceEntityRepository<Book>
@@ -60,6 +60,21 @@ class BookRepository extends ServiceEntityRepository
         ->setParameter("id", $id)
         ->getQuery()
         ->getSingleResult();
+    }
+
+    // Récupérer des Book par categorie
+    public function findByCategory(int $id): array
+    {
+        $entityManager = $this->getEntityManager();
+
+        $query = $entityManager->createQuery(
+            'SELECT b, c
+            FROM App\Entity\Book b
+            INNER JOIN b.categories c
+            WHERE c.id = :id'
+        )->setParameter('id', $id);
+
+        return $query->getResult();
     }
 
     

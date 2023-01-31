@@ -9,7 +9,11 @@
 </header>
 <main class="main-content">
     <div class="container">
+    {% if category %}
+        <h2 class="h4 mb-4">Categorie: {{category.name}}</h2>
+    {% else %}
         <h2 class="h4 mb-4">Dernières parutions</h2>
+    {% endif %}
         {% include "./components/livres/livre-item.html.twig" %}
     <div class="navigation">
             {{ knp_pagination_render(
