@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Erreur client : c'est de votre faute !!!{% endblock %}
+
+{% block body %}
+<header class="Header">
+{% include "./components/navbar/navbar.html.twig" %}
+</header>
+<main class="main-content flex-grow-1 pt-5">
+    <div class="container text-center">
+        <h2>Accès refusé</h2>
+        <p>Vous avez essayé d'accéder à une page qui ne vous est pas autorisée! 😡</p>
+        <p>C'est vraiment pas gentil, veuillez retourner à la page d'accueil pour reprendre une navigation normale</p>
+    </div>
+</main>
+{% include "./components/footer/footer.html.twig" %}
+{% endblock %}

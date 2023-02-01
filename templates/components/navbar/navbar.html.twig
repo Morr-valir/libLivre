@@ -23,7 +23,9 @@
           <span class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">{{app.user}}</span>
           <ul class="dropdown-menu dropdown-menu dropdown-menu-sm-end">
             <li><a href="{{ path('app_user') }}" class="dropdown-item">Mon profile</a></li>
+            {% if is_granted("ROLE_ADMIN") or is_granted("ROLE_BIBLI") %}
             <li><a href="{{ path('admin.index') }}" class="dropdown-item">Administration</a></li>
+            {% endif %}
             <li><a href="{{ path('app_logout') }}" class="dropdown-item">Se déconnecter</a></li>
           </ul>
         </div>
