@@ -24,12 +24,12 @@ class SingleController extends AbstractController
      * @param Category $category La catégorie recherchée
      */
     #[Route('/shop/{id}', name: 'app_shop_category', condition: "params['id'] matches '/[0-9]+/'")]
-    public function bookByCategory(Category $category,PaginatorInterface $paginator, Request $request, BookRepository $bookRepository): Response
+    public function bookByCategory(Category $category, PaginatorInterface $paginator, Request $request, BookRepository $bookRepository): Response
     {
         $data = $bookRepository->findByCategory($category->getId());
         $books = $paginator->paginate(
             $data,
-            $request->query->getInt('page',1),
+            $request->query->getInt('page', 1),
             6
         );
 
@@ -70,9 +70,8 @@ class SingleController extends AbstractController
         $em->persist($booking);
         $em->flush();
 
-        $this->addFlash('info', 'Votre livre à bien été réserver !');
+        $this->addFlash('info', 'Votre livre à bien été réservé !');
 
         return $this->redirectToRoute('app_single', ['id' => $book->getId(), 'title' => $book->getName()]);
-    } 
-
+    }
 }
