@@ -11,13 +11,8 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 
 class ImportbookCommandService
 {
-    public function __construct(
-        private BookRepository $repoBook,
-        private EntityManagerInterface $em
-        )
-    {
-
-    }
+    public function __construct(private BookRepository $repoBook, private EntityManagerInterface $em)
+    {}
     public function importbook(SymfonyStyle $io): void
     {
         $io->title('Importation des livres');
