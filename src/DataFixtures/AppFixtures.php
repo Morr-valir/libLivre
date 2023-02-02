@@ -62,7 +62,7 @@ class AppFixtures extends Fixture
             ->setReleaseDate($date1)
             ->addCategory($category1)
             ->setIsAvailable(true)
-            ->setImage('https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcT99IrfJ3_BVvv08GQfE1GO0w7fXygEag5pblx5mb3ItWfmuUa4');
+            ->setImage('images (1).jfif');
         $manager->persist($book1);
         $manager->flush();
 
@@ -74,7 +74,7 @@ class AppFixtures extends Fixture
             ->setReleaseDate($date2)
             ->addCategory($category2)
             ->setIsAvailable(true)
-            ->setImage('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSN2BZludkjNUBX46SzMVg8l9MYjAuCjefpwb3Gdf8aGJKy3A73');
+            ->setImage('images.jfif');
         $manager->persist($book2);
         $manager->flush();
 
@@ -86,7 +86,7 @@ class AppFixtures extends Fixture
             ->setReleaseDate($date3)
             ->addCategory($category2)
             ->setIsAvailable(true)
-            ->setImage('https://images-metadata-tea.s3.eu-central-1.amazonaws.com/0c/d1/metadata-image-65095778.jpeg');
+            ->setImage('metadata-image-65095778.jpeg');
         $manager->persist($book3);
         $manager->flush();
 
@@ -98,7 +98,7 @@ class AppFixtures extends Fixture
             ->setReleaseDate($date4)
             ->addCategory($category2)
             ->setIsAvailable(true)
-            ->setImage('https://assets.edenlivres.fr/medias/d3/16b51f464676389c38791ab4b7bdb4f8914de6.jpg?h=-&w=200');
+            ->setImage('16b51f464676389c38791ab4b7bdb4f8914de6.jpg');
         $manager->persist($book4);
         $manager->flush();
 
@@ -109,12 +109,12 @@ class AppFixtures extends Fixture
             ->setSummary("Colleen et Rich Gundersen habitent avec leur jeune fils Chub sur la côte en Californie du Nord. On est en 1977, et l'existence dans cette région forestière est de plus en plus difficile. Depuis des générations, le bois fait vivre toute la communauté, mais aujourd'hui ce mode de vie est menacé.
 
             Quoique sans diplôme, Colleen est sage-femme. Rich, lui, est de ces élagueurs qui travaillent au sommet des arbres. C'est un métier dangereux, dont son père et son grand-père sont morts. Il souhaite une vie meilleure pour sa famille. Pour cela, il a investi en secret toutes leurs économies dans un lot de séquoias pluricentenaires. Mais lorsque Colleen, qui veut avoir un deuxième enfant malgré la perte d'un bébé lors de sa dernière grossesse, se met à dénoncer les pratiques de la compagnie d'abattage et l'épandage d'herbicides responsables, selon elle, de nombreuses fausses couches dans la région, Rich et elle se retrouvent dans deux camps adverses.
-            
+
             Encensée par Stephen King et toute la presse américaine, Ash Davidson signe avec ce texte bouleversant une fresque ample, puissante et tellurique.")
             ->setReleaseDate($date5)
             ->addCategory($category3)
             ->setIsAvailable(true)
-            ->setImage('https://www.lalibrairie.com/cache/img/livres/132/9782330174132.webp');
+            ->setImage('9782330174132.webp');
         $manager->persist($book5);
         $manager->flush();
 
@@ -126,7 +126,7 @@ class AppFixtures extends Fixture
             ->setReleaseDate($date6)
             ->addCategory($category4)
             ->setIsAvailable(true)
-            ->setImage('https://www.lalibrairie.com/cache/img/livres/446/9782351782446.webp');
+            ->setImage('9782351782446.webp');
         $manager->persist($book6);
         $manager->flush();
 
@@ -137,14 +137,14 @@ class AppFixtures extends Fixture
             ->setSummary("Au coeur de la vie d'un écrivain
 
             « Entre vingt et trente ans, cette décennie effroyable, j'avais essayé de prendre part à la vie autour de moi, à la vie normale, à ce que tout un chacun vivait, mais sans y parvenir, et ce sentiment d'échec était si fort, cet éclair d'indignité si intense que peu à peu, sans en être conscient, je me focalisai sur autre chose, me plongeai plus profondément dans la littérature, sans que cela ait l'air d'une retraite, d'un refuge, mais au contraire d'un élan fort et triomphal, et, avant même de m'en rendre compte, c'était devenu ma vie. »
-            
+
             Âgé de quarante ans dans ce récit, Knausgaard est à l'aube de sa gloire internationale. Il partage son quotidien entre l'écriture de ce qui sera son grand oeuvre et l'éducation de ses trois enfants en bas âge. Sa vie à Malmö est réglée comme du papier à musique. Jusqu'à ce que son oncle s'oppose à la publication de son premier ouvrage autobiographique. Un interdit qui va le plonger dans une grande angoisse et déséquilibrer profondément sa vie d'homme et de père.
-            
+
             Fin de combat est une réflexion bouleversante sur les rapports de Knausgaard à son père et à sa famille. De sa voix singulière, il interroge les textes littéraires et politiques les plus emblématiques du XXe siècle, d'À la recherche du temps perdu à Mein Kampf, pour comprendre la relation mystérieuse qu'entretiennent l'écriture et la vie.")
             ->setReleaseDate($date7)
             ->addCategory($category3)
             ->setIsAvailable(true)
-            ->setImage('https://www.lalibrairie.com/cache/img/livres/089/9782207136089.webp');
+            ->setImage('9782207136089.webp');
         $manager->persist($book7);
         $manager->flush();
 
@@ -155,14 +155,14 @@ class AppFixtures extends Fixture
             ->setSummary("Dans cette luxuriante autobiographie, Jim Harrison commence par le récit de son enfance. Mais plutôt que d'en distiller les détails, le grand romancier américain en retient surtout les images intenses, celles imprégnées de nourritures délicieuses, de feuilles fraîches et de bruits de rivière, car seule «la sensualité marque la mémoire».
 
             Dès lors, l'écriture déroule un formidable et gargantuesque appétit pour la vie, mais aussi une mélancolie profonde dont Jim Harrison, comme tout hédoniste, n'est pas exempt. Mais le plus extraordinaire est encore dans cette folle déclaration d'amour adressée à la littérature. En marge, dans le fond, n'est traversé que par un seul récit: celui d'une vie vouée à l'écriture.
-            
+
             «Des coups de blues, des parties de rigolade, des plages de solitude, l'amitié, tels sont les ingrédients mélangés dans ce cocktail à boire cul sec: attention, il est très fort. À consommer sans modération.»
-            
+
             Éric Neuhoff, Figaro Madame")
             ->setReleaseDate($date8)
             ->addCategory($category4)
             ->setIsAvailable(true)
-            ->setImage('https://www.lalibrairie.com/cache/img/livres/194/9782264039194.webp');
+            ->setImage('9782264039194.webp');
         $manager->persist($book8);
         $manager->flush();
 
@@ -174,7 +174,7 @@ class AppFixtures extends Fixture
             ->setReleaseDate($date9)
             ->addCategory($category5)
             ->setIsAvailable(true)
-            ->setImage('https://www.lalibrairie.com/cache/img/livres/043/9782757835043.webp');
+            ->setImage('9782757835043.webp');
         $manager->persist($book9);
         $manager->flush();
 
@@ -186,7 +186,7 @@ class AppFixtures extends Fixture
             ->setReleaseDate($date10)
             ->addCategory($category6)
             ->setIsAvailable(true)
-            ->setImage('https://www.lalibrairie.com/cache/img/livres/324/9782823619324.webp');
+            ->setImage('9782823619324.webp');
         $manager->persist($book10);
         $manager->flush();
 
@@ -197,14 +197,14 @@ class AppFixtures extends Fixture
             ->setSummary("Dans cette luxuriante autobiographie, Jim Harrison commence par le récit de son enfance. Mais plutôt que d'en distiller les détails, le grand romancier américain en retient surtout les images intenses, celles imprégnées de nourritures délicieuses, de feuilles fraîches et de bruits de rivière, car seule «la sensualité marque la mémoire».
 
             Dès lors, l'écriture déroule un formidable et gargantuesque appétit pour la vie, mais aussi une mélancolie profonde dont Jim Harrison, comme tout hédoniste, n'est pas exempt. Mais le plus extraordinaire est encore dans cette folle déclaration d'amour adressée à la littérature. En marge, dans le fond, n'est traversé que par un seul récit: celui d'une vie vouée à l'écriture.
-            
+
             «Des coups de blues, des parties de rigolade, des plages de solitude, l'amitié, tels sont les ingrédients mélangés dans ce cocktail à boire cul sec: attention, il est très fort. À consommer sans modération.»
-            
+
             Éric Neuhoff, Figaro Madame")
             ->setReleaseDate($date11)
             ->addCategory($category4)
             ->setIsAvailable(true)
-            ->setImage('https://www.lalibrairie.com/cache/img/livres/194/9782264039194.webp');
+            ->setImage('9782264039194.webp');
         $manager->persist($book11);
         $manager->flush();
 
@@ -216,7 +216,7 @@ class AppFixtures extends Fixture
             ->setReleaseDate($date12)
             ->addCategory($category5)
             ->setIsAvailable(true)
-            ->setImage('https://www.lalibrairie.com/cache/img/livres/043/9782757835043.webp');
+            ->setImage('9782757835043.webp');
         $manager->persist($book12);
         $manager->flush();
 
@@ -228,12 +228,12 @@ class AppFixtures extends Fixture
             ->setReleaseDate($date13)
             ->addCategory($category6)
             ->setIsAvailable(true)
-            ->setImage('https://www.lalibrairie.com/cache/img/livres/324/9782823619324.webp');
+            ->setImage('9782823619324.webp');
         $manager->persist($book13);
         $manager->flush();
 
         // Création des State
-        $states = ["Reservé", "En cours", "Emprunté", "Terminé","Annulé"];
+        $states = ["Reservé", "Emprunté", "Terminé","Annulé"];
         foreach ($states as $state) {
             $stateBooking = new StateBooking();
             $stateBooking->setName($state);
