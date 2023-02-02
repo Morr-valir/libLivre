@@ -13,7 +13,7 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 
 #[AsCommand(
     name: 'app:importbook',
-    description: 'Add a short description for your command',
+    description: 'Importation de ficher CSV pour les livres',
 )]
 class ImportbookCommand extends Command
 {
