@@ -14,7 +14,7 @@ class Log
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $refenceBooking = null;
+    private ?string $referenceBooking = null;
 
     #[ORM\Column(length: 255)]
     private ?string $email = null;
@@ -30,14 +30,14 @@ class Log
         return $this->id;
     }
 
-    public function getRefenceBooking(): ?string
+    public function getreferenceBooking(): ?string
     {
-        return $this->refenceBooking;
+        return $this->referenceBooking;
     }
 
-    public function setRefenceBooking(string $refenceBooking): self
+    public function setreferenceBooking(string $referenceBooking): self
     {
-        $this->refenceBooking = $refenceBooking;
+        $this->referenceBooking = $referenceBooking;
 
         return $this;
     }

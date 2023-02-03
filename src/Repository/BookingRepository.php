@@ -3,8 +3,8 @@
 namespace App\Repository;
 
 use App\Entity\Booking;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @extends ServiceEntityRepository<Booking>
@@ -27,6 +27,10 @@ class BookingRepository extends ServiceEntityRepository
 
         if ($flush) {
             $this->getEntityManager()->flush();
+            $this->getEntityManager()
+                ->getConnection()
+                ->prepare('CALL ps_update_booking_reference(LAST_INSERT_ID());')
+                ->executeQuery();
         }
     }
 

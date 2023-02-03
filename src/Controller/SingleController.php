@@ -6,6 +6,7 @@ use App\Entity\Book;
 use DateTimeImmutable;
 use App\Entity\Booking;
 use App\Entity\Category;
+use App\Repository\BookingRepository;
 use App\Repository\BookRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\StateBookingRepository;
@@ -14,11 +15,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 
 class SingleController extends AbstractController
 {
-    /** 
+    /**
      * @author Evan
      * @return Response Redirection vers la page Shop
      * @param Category $category La catégorie recherchée
@@ -56,19 +56,17 @@ class SingleController extends AbstractController
     }
 
     #[Route('/{title}/addOrder/{id}', name: "app_single_add_order")]
-    public function addOrder(Book $book, EntityManagerInterface $em, StateBookingRepository $stateBookingRepository): Response
+    public function addOrder(Book $book, EntityManagerInterface $em, StateBookingRepository $stateBookingRepository, BookingRepository $br): Response
     {
         $user = $this->getUser();
 
         $booking = new Booking();
-        $booking->setReference($user->getId() . "-" . $book->getId())
-            ->setUser($user)
-            ->addBook($book)
+        $booking->setUser($user)
+            ->setBook($book)
             ->setCreatedAt(new DateTimeImmutable("now"))
             ->setState($stateBookingRepository->stateSelected("Reservé"));
 
-        $em->persist($booking);
-        $em->flush();
+        $br->save($booking, true);
 
         $this->addFlash('info', 'Votre livre à bien été réservé !');
 

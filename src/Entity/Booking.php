@@ -15,7 +15,7 @@ class Booking
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $reference = null;
 
     #[ORM\Column]
@@ -25,17 +25,14 @@ class Booking
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 
-    #[ORM\ManyToMany(targetEntity: Book::class)]
-    private Collection $books;
+    #[ORM\ManyToOne(targetEntity: Book::class)]
+    private Book $book;
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
     private ?StateBooking $state = null;
 
-    public function __construct()
-    {
-        $this->books = new ArrayCollection();
-    }
+    public function __construct(){}
 
     public function getId(): ?int
     {
@@ -78,26 +75,14 @@ class Booking
         return $this;
     }
 
-    /**
-     * @return Collection<int, Book>
-     */
-    public function getBooks(): Collection
+    public function getBook(): Book
     {
-        return $this->books;
+        return $this->book;
     }
 
-    public function addBook(Book $book): self
+    public function setBook(Book $book): self
     {
-        if (!$this->books->contains($book)) {
-            $this->books->add($book);
-        }
-
-        return $this;
-    }
-
-    public function removeBook(Book $book): self
-    {
-        $this->books->removeElement($book);
+        $this->book = $book;
 
         return $this;
     }
