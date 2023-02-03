@@ -20,7 +20,7 @@ class Log
     private ?string $email = null;
 
     #[ORM\Column(length: 100)]
-    private ?string $etat = null;
+    private ?string $state = null;
 
     #[ORM\Column]
     private ?\DateTimeImmutable $created_at = null;
@@ -54,14 +54,14 @@ class Log
         return $this;
     }
 
-    public function getEtat(): ?string
+    public function getState(): ?string
     {
-        return $this->etat;
+        return $this->state;
     }
 
-    public function setEtat(string $etat): self
+    public function setState(string $state): self
     {
-        $this->etat = $etat;
+        $this->state = $state;
 
         return $this;
     }
