@@ -62,7 +62,7 @@ class AppFixtures extends Fixture
             ->setReleaseDate($date1)
             ->addCategory($category1)
             ->setIsAvailable(true)
-            ->setImage('https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcT99IrfJ3_BVvv08GQfE1GO0w7fXygEag5pblx5mb3ItWfmuUa4');
+            ->setImage('hb.png');
         $manager->persist($book1);
         $manager->flush();
 
@@ -74,7 +74,7 @@ class AppFixtures extends Fixture
             ->setReleaseDate($date2)
             ->addCategory($category2)
             ->setIsAvailable(true)
-            ->setImage('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSN2BZludkjNUBX46SzMVg8l9MYjAuCjefpwb3Gdf8aGJKy3A73');
+            ->setImage('excalibur.png');
         $manager->persist($book2);
         $manager->flush();
 
@@ -86,7 +86,7 @@ class AppFixtures extends Fixture
             ->setReleaseDate($date3)
             ->addCategory($category2)
             ->setIsAvailable(true)
-            ->setImage('https://images-metadata-tea.s3.eu-central-1.amazonaws.com/0c/d1/metadata-image-65095778.jpeg');
+            ->setImage('007.png');
         $manager->persist($book3);
         $manager->flush();
 
@@ -98,7 +98,7 @@ class AppFixtures extends Fixture
             ->setReleaseDate($date4)
             ->addCategory($category2)
             ->setIsAvailable(true)
-            ->setImage('https://assets.edenlivres.fr/medias/d3/16b51f464676389c38791ab4b7bdb4f8914de6.jpg?h=-&w=200');
+            ->setImage('PeterPan.png');
         $manager->persist($book4);
         $manager->flush();
 
@@ -114,7 +114,7 @@ class AppFixtures extends Fixture
             ->setReleaseDate($date5)
             ->addCategory($category3)
             ->setIsAvailable(true)
-            ->setImage('https://www.lalibrairie.com/cache/img/livres/132/9782330174132.webp');
+            ->setImage('ash.png');
         $manager->persist($book5);
         $manager->flush();
 
@@ -126,7 +126,7 @@ class AppFixtures extends Fixture
             ->setReleaseDate($date6)
             ->addCategory($category4)
             ->setIsAvailable(true)
-            ->setImage('https://www.lalibrairie.com/cache/img/livres/446/9782351782446.webp');
+            ->setImage('deacon.png');
         $manager->persist($book6);
         $manager->flush();
 
@@ -144,7 +144,7 @@ class AppFixtures extends Fixture
             ->setReleaseDate($date7)
             ->addCategory($category3)
             ->setIsAvailable(true)
-            ->setImage('https://www.lalibrairie.com/cache/img/livres/089/9782207136089.webp');
+            ->setImage('combat.png');
         $manager->persist($book7);
         $manager->flush();
 
@@ -162,7 +162,7 @@ class AppFixtures extends Fixture
             ->setReleaseDate($date8)
             ->addCategory($category4)
             ->setIsAvailable(true)
-            ->setImage('https://www.lalibrairie.com/cache/img/livres/194/9782264039194.webp');
+            ->setImage('memoires.png');
         $manager->persist($book8);
         $manager->flush();
 
@@ -174,7 +174,7 @@ class AppFixtures extends Fixture
             ->setReleaseDate($date9)
             ->addCategory($category5)
             ->setIsAvailable(true)
-            ->setImage('https://www.lalibrairie.com/cache/img/livres/043/9782757835043.webp');
+            ->setImage('jaune.png');
         $manager->persist($book9);
         $manager->flush();
 
@@ -186,7 +186,7 @@ class AppFixtures extends Fixture
             ->setReleaseDate($date10)
             ->addCategory($category6)
             ->setIsAvailable(true)
-            ->setImage('https://www.lalibrairie.com/cache/img/livres/324/9782823619324.webp');
+            ->setImage('neuf2.png');
         $manager->persist($book10);
         $manager->flush();
 
@@ -204,7 +204,7 @@ class AppFixtures extends Fixture
             ->setReleaseDate($date11)
             ->addCategory($category4)
             ->setIsAvailable(true)
-            ->setImage('https://www.lalibrairie.com/cache/img/livres/194/9782264039194.webp');
+            ->setImage('marge.png');
         $manager->persist($book11);
         $manager->flush();
 
@@ -216,7 +216,7 @@ class AppFixtures extends Fixture
             ->setReleaseDate($date12)
             ->addCategory($category5)
             ->setIsAvailable(true)
-            ->setImage('https://www.lalibrairie.com/cache/img/livres/043/9782757835043.webp');
+            ->setImage('rosejaunes.png');
         $manager->persist($book12);
         $manager->flush();
 
@@ -228,7 +228,7 @@ class AppFixtures extends Fixture
             ->setReleaseDate($date13)
             ->addCategory($category6)
             ->setIsAvailable(true)
-            ->setImage('https://www.lalibrairie.com/cache/img/livres/324/9782823619324.webp');
+            ->setImage('Neuf.png');
         $manager->persist($book13);
         $manager->flush();
 
