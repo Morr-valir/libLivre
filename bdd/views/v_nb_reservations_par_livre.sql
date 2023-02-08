@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : ven. 03 fév. 2023 à 11:39
+-- Généré le : mer. 08 fév. 2023 à 04:13
 -- Version du serveur : 8.0.31
 -- Version de PHP : 8.1.13
 
@@ -24,24 +24,17 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Doublure de structure pour la vue `v_nb_reservations_par_livre`
--- (Voir ci-dessous la vue réelle)
---
-DROP VIEW IF EXISTS `v_nb_reservations_par_livre`;
-CREATE TABLE IF NOT EXISTS `v_nb_reservations_par_livre` (
-`amount` bigint
-,`name` varchar(255)
-);
-
--- --------------------------------------------------------
-
---
 -- Structure de la vue `v_nb_reservations_par_livre`
 --
-DROP TABLE IF EXISTS `v_nb_reservations_par_livre`;
 
 DROP VIEW IF EXISTS `v_nb_reservations_par_livre`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_nb_reservations_par_livre`  AS SELECT `book`.`name` AS `name`, count(`book`.`id`) AS `amount` FROM (`log` join `book` on((`book`.`id` = `fn_get_book_id_from_booking_reference`(`log`.`reference_booking`)))) WHERE (`log`.`state` = 'Reservé') GROUP BY `book`.`id`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_nb_reservations_par_livre`  AS SELECT `book`.`name` AS `name`, count(`book`.`id`) AS `amount` FROM (`log` join `book` on((`book`.`id` = `fn_get_book_id_from_booking_reference`(`log`.`reference_booking`)))) WHERE (`log`.`state` = 'Reservé') GROUP BY `book`.`id` ORDER BY `amount` DESC;
+
+--
+-- VIEW `v_nb_reservations_par_livre`
+-- Données : Aucun(e)
+--
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
