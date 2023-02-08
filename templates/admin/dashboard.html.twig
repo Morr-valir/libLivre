@@ -1,1 +1,19 @@
 {% extends "@EasyAdmin/page/content.html.twig" %}
+
+{% block content_title %}
+    <h2>Tableau de bord</h2>
+{% endblock %}
+
+{% block main %}
+    <main>
+        <div class="row">
+            <div class="col">
+                <h3>Statistiques : 📊</h3>
+                <div class="statistiques mt-4">
+                    <p>Livre le plus réservé: {{ mostBookdedBook[0].name }} ({{ mostBookdedBook[0].amount }} fois)</p>
+                    <p>Livre le plus emprunté et rendu: {{ mostReturnedBook[0].name }} ({{ mostReturnedBook[0].amount }} fois)</p>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}
