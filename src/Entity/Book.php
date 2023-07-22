@@ -2,39 +2,59 @@
 
 namespace App\Entity;
 
-use App\Repository\BookRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use ApiPlatform\Metadata\Get;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\BookRepository;
+use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\GetCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Serializer\Annotation\Groups;
+use App\Entity\Category;
 
-#[ORM\Entity(repositoryClass: BookRepository::class)]
+#[ApiResource(
+    normalizationContext: ['groups' => ['GetCollectionBooks']],
+    denormalizationContext: ['groups' => ['GetCollectionBooks']],
+    operations:[
+        new Get(),
+        new GetCollection(),
+    ],)]
+    #[ORM\Entity(repositoryClass: BookRepository::class)]
 class Book
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups("GetCollectionBooks")]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups("GetCollectionBooks")]
     private ?string $name = null;
 
     #[ORM\Column(length: 200)]
+    #[Groups("GetCollectionBooks")]
     private ?string $author = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
+    #[Groups("GetCollectionBooks")]
     private ?string $summary = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[Groups("GetCollectionBooks")]
     private ?\DateTimeInterface $releaseDate = null;
 
     #[ORM\ManyToMany(targetEntity: Category::class)]
+    #[Groups("GetCollectionBooks")]
     private Collection $categories;
 
     #[ORM\Column(length: 255)]
+    #[Groups("GetCollectionBooks")]
     private ?string $image = null;
 
     #[ORM\Column]
+    #[Groups("GetCollectionBooks")]
     private ?bool $isAvailable = null;
 
     public function __construct()
@@ -147,4 +167,5 @@ class Book
 
         return $this;
     }
+
 }

@@ -29,7 +29,7 @@ class UserType extends AbstractType
                 'label' => "Tel"
             ])
             ->add('birthDate', BirthdayType::class, [
-                'label' => "Date de naissance"
+                'label' => "Date de naissance",
             ]);
     }
 
