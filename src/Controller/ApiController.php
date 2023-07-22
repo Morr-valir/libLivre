@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Repository\BookRepository;
+use ApiPlatform\Metadata\ApiResource;
 use App\Repository\CategoryRepository;
+use ApiPlatform\Metadata\GetCollection;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -21,7 +23,6 @@ class ApiController extends AbstractController
         $this->repoBooks = $bookRepository;
         $this->repoCategory = $categoryRepository;
     }
-
     #[Route('/api/categories/book/{id}', name: 'api_collection_booksCategory', methods: ['GET'])]
     public function getBooksToCategories(SerializerInterface $serializer, Request $request): Response
     {
