@@ -12,18 +12,26 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\security\Core\SecurityContext;
 
 class ApiController extends AbstractController
 {
 
     private $repoBooks;
     private $bookingRepository;
-    public function __construct(BookRepository $bookRepository, BookingRepository $bookingRepository)
+    private $security;
+    public function __construct(BookRepository $bookRepository, BookingRepository $bookingRepository, SecurityContext $securityContext)
     {
         $this->repoBooks = $bookRepository;
         $this->bookingRepository = $bookingRepository;
+        $this->security = $securityContext;
     }
     
+    public function __invoke()
+    {
+        $user = $this->security->getUser();
+        return $user;
+    }
 
     #[Route(path:'/api/login', name : 'api_login', methods:['POST'])]
     public function login() {
