@@ -20,6 +20,7 @@ use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
         new Get(
             name: 'Data user',
             security: "is_granted('ROLE_USER')",
+            controller:ApiController::class,
             uriTemplate: '/dataUser/{id}',),
 ])]
 #[ORM\Entity(repositoryClass: UserRepository::class)]

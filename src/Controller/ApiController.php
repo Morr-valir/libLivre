@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\security\Core\SecurityContext;
+use Symfony\Bundle\SecurityBundle\Security;
 
 class ApiController extends AbstractController
 {
@@ -20,7 +20,10 @@ class ApiController extends AbstractController
     private $repoBooks;
     private $bookingRepository;
     private $security;
-    public function __construct(BookRepository $bookRepository, BookingRepository $bookingRepository, SecurityContext $securityContext)
+    public function __construct
+    (BookRepository $bookRepository,
+     BookingRepository $bookingRepository, 
+     Security $securityContext)
     {
         $this->repoBooks = $bookRepository;
         $this->bookingRepository = $bookingRepository;
