@@ -2,13 +2,23 @@
 
 namespace App\Entity;
 
-use App\Repository\UserRepository;
+use ApiPlatform\Metadata\Get;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\UserRepository;
+use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\GetCollection;
+use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
-use Symfony\Component\Security\Core\User\UserInterface;
 
+#[ApiResource(
+    normalizationContext: ['groups' => ['GetUser']],
+    denormalizationContext: ['groups' => ['GetUser']],
+    operations:[
+        new Get(),
+    ],)]
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
@@ -16,6 +26,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups("GetUser")]
     private ?int $id = null;
 
     #[ORM\Column(length: 180, unique: true)]
@@ -31,12 +42,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $password = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups("GetUser")]
     private ?string $firstname = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups("GetUser")]
     private ?string $lastname = null;
 
     #[ORM\Column(length: 10)]
+    #[Groups("GetUser")]
     private ?string $tel = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
