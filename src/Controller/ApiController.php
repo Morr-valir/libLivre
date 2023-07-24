@@ -24,6 +24,16 @@ class ApiController extends AbstractController
         $this->bookingRepository = $bookingRepository;
     }
     
+
+    #[Route(path:'/api/login', name : 'api_login', methods:['POST'])]
+    public function login() {
+        $user = $this->getUser();
+        return $this->json([
+            'username' => $user->getUserIdentifier(),
+            'roles' => $user->getRoles()
+        ]);
+    }
+    
     /**
      * @return Book to JSON response
      */

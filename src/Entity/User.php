@@ -2,23 +2,25 @@
 
 namespace App\Entity;
 
-use ApiPlatform\Metadata\Get;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\UserRepository;
 use ApiPlatform\Metadata\ApiResource;
-use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\Get;
+use App\Controller\ApiController;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 
 #[ApiResource(
-    normalizationContext: ['groups' => ['GetUser']],
-    denormalizationContext: ['groups' => ['GetUser']],
-    operations:[
-        new Get(),
-    ],)]
+    normalizationContext: ['groups' => 'GetUser'],
+    operations: [
+        new Get(
+            name: 'Data user',
+            security: "is_granted('ROLE_USER')",
+            uriTemplate: '/dataUser/{id}',),
+])]
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
