@@ -67,6 +67,10 @@ class ApiController extends AbstractController
         return $response;
     }
 
+    /**
+     * Get a collection bookin form user id
+     * @return JSON array
+     */
     #[Route('/api/booking/user/{id}', name: 'api_collection_bookingUser', methods: ['GET'])]
     public function getBookingToUSerId(SerializerInterface $serializer, Request $request): Response
     {
