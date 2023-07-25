@@ -21,7 +21,7 @@ use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
             name: 'Data user',
             security: "is_granted('ROLE_USER')",
             controller:ApiController::class,
-            uriTemplate: '/dataUser/{id}',),
+            uriTemplate: '/dataUser/{email}',),
 ])]
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
@@ -31,9 +31,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\GeneratedValue]
     #[ORM\Column]
     #[Groups("GetUser")]
+    #[ApiProperty(identifier: false)]
     private ?int $id = null;
 
     #[ORM\Column(length: 180, unique: true)]
+    #[ApiProperty(identifier: true)]
     private ?string $email = null;
 
     #[ORM\Column]
