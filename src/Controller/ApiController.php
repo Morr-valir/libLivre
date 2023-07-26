@@ -61,7 +61,7 @@ class ApiController extends AbstractController
             ]);
             return $response;
         }
-        $jsonCollectionBooks = $normalizerInterface->normalize($getCollectionBooks,'json',['groups' => "GetBooking"]);
+        $jsonCollectionBooks = $normalizerInterface->normalize($getCollectionBooks, null, ['groups' => "GetBooking"]);
         $encodeJson = json_encode($jsonCollectionBooks);
         $response = new Response($encodeJson,200, [
             'Content-Type' => 'application/json',
