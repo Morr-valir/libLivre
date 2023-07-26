@@ -99,24 +99,27 @@ class ApiController extends AbstractController
 
     #[Route('/addOrder/{id}', name: "app_single_add_order", methods: ['GET'])]
     #[IsGranted('ROLE_USER')]
-    public function addOrder(Book $book, EntityManagerInterface $em, StateBookingRepository $stateBookingRepository): Response
+    public function addOrder(EntityManagerInterface $em, StateBookingRepository $stateBookingRepository, Request $request): Response
     {
+        $idBook = $request->get('id');
+        $bookSelect = $this->repoBooks->findById($idBook);
         $user = $this->getUser();
         if (!$user) {
 
             return new Response('Unauthorized', Response::HTTP_UNAUTHORIZED);
         }
+        if ($bookSelect->isIsAvailable()){
+            return new Response('Livre non disponible', Response::HTTP_CONFLICT);
+        }
         $booking = new Booking();
-        $booking->setReference($user->getId() . "-" . $book->getId())
+        $booking->setReference($user->getId() . "-" .$bookSelect->getId())
             ->setUser($user)
-            ->addBook($book)
+            ->addBook($bookSelect)
             ->setCreatedAt(new DateTimeImmutable("now"))
             ->setState($stateBookingRepository->stateSelected("Reservé"));
 
         $em->persist($booking);
         $em->flush();
-
-        $this->addFlash('info', 'Votre livre à bien été réservé !');
         return new Response('Votre livre à bien été réservé !', Response::HTTP_OK);
     }
 
