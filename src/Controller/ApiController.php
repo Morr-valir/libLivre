@@ -2,11 +2,16 @@
 
 namespace App\Controller;
 
+use App\Entity\Book;
+use DateTimeImmutable;
+use App\Entity\Booking;
 use App\Repository\BookRepository;
 use ApiPlatform\Metadata\ApiResource;
 use App\Repository\BookingRepository;
 use App\Repository\CategoryRepository;
 use ApiPlatform\Metadata\GetCollection;
+use Doctrine\ORM\EntityManagerInterface;
+use App\Repository\StateBookingRepository;
 use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -90,6 +95,29 @@ class ApiController extends AbstractController
             'Content-Type' => 'application/json',
         ]);
         return $response;
+    }
+
+    #[Route('/addOrder/{id}', name: "app_single_add_order", methods: ['GET'])]
+    #[IsGranted('ROLE_USER')]
+    public function addOrder(Book $book, EntityManagerInterface $em, StateBookingRepository $stateBookingRepository): Response
+    {
+        $user = $this->getUser();
+        if (!$user) {
+
+            return new Response('Unauthorized', Response::HTTP_UNAUTHORIZED);
+        }
+        $booking = new Booking();
+        $booking->setReference($user->getId() . "-" . $book->getId())
+            ->setUser($user)
+            ->addBook($book)
+            ->setCreatedAt(new DateTimeImmutable("now"))
+            ->setState($stateBookingRepository->stateSelected("Reservé"));
+
+        $em->persist($booking);
+        $em->flush();
+
+        $this->addFlash('info', 'Votre livre à bien été réservé !');
+        return new Response('Votre livre à bien été réservé !', Response::HTTP_OK);
     }
 
 
