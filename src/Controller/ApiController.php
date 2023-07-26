@@ -7,13 +7,12 @@ use ApiPlatform\Metadata\ApiResource;
 use App\Repository\BookingRepository;
 use App\Repository\CategoryRepository;
 use ApiPlatform\Metadata\GetCollection;
-use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\SerializerInterface;
-use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Bundle\SecurityBundle\Security;
 
 class ApiController extends AbstractController
 {
@@ -50,7 +49,7 @@ class ApiController extends AbstractController
      * @return Book to JSON response
      */
     #[Route('/api/categories/book/{id}', name: 'api_collection_booksCategory', methods: ['GET'])]
-    public function getBooksToCategories(NormalizerInterface $normalizerInterface, Request $request): Response
+    public function getBooksToCategories(SerializerInterface $serializer, Request $request): Response
     {
         $idBook = $request->get('id');
         $getCollectionBooks = $this->repoBooks->findByCategory($idBook);
@@ -61,9 +60,8 @@ class ApiController extends AbstractController
             ]);
             return $response;
         }
-        $jsonCollectionBooks = $normalizerInterface->normalize($getCollectionBooks, null, ['groups' => "GetBooking"]);
-        $encodeJson = json_encode($jsonCollectionBooks);
-        $response = new Response($encodeJson,200, [
+        $jsonCollectionBooks = $serializer->serialize($getCollectionBooks,'json');
+        $response = new Response($jsonCollectionBooks,200, [
             'Content-Type' => 'application/json',
         ]);
         return $response;
@@ -85,7 +83,7 @@ class ApiController extends AbstractController
             ]);
             return $response;
         }
-        $jsonBookingUser = $serializer->serialize($getBookingList,'json');
+        $jsonBookingUser = $serializer->serialize($getBookingList,'json',['group' => 'GetBooking']);
         $response = new Response($jsonBookingUser,200,[
             'Content-Type' => 'application/json',
         ]);
