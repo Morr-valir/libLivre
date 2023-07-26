@@ -7,12 +7,13 @@ use ApiPlatform\Metadata\ApiResource;
 use App\Repository\BookingRepository;
 use App\Repository\CategoryRepository;
 use ApiPlatform\Metadata\GetCollection;
+use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Bundle\SecurityBundle\Security;
 
 class ApiController extends AbstractController
 {
@@ -72,6 +73,7 @@ class ApiController extends AbstractController
      * @return JSON array
      */
     #[Route('/api/booking/user/{id}', name: 'api_collection_bookingUser', methods: ['GET'])]
+    #[IsGranted('ROLE_USER')]
     public function getBookingToUSerId(SerializerInterface $serializer, Request $request): Response
     {
         $userId = $request->get('id');
