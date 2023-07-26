@@ -60,7 +60,7 @@ class ApiController extends AbstractController
             ]);
             return $response;
         }
-        $jsonCollectionBooks = $serializer->serialize($getCollectionBooks,'json');
+        $jsonCollectionBooks = $serializer->serialize($getCollectionBooks,'json',['groups' => "GetBooking"]);
         $response = new Response($jsonCollectionBooks,200, [
             'Content-Type' => 'application/json',
         ]);
