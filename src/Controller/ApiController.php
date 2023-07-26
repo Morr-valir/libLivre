@@ -97,7 +97,7 @@ class ApiController extends AbstractController
         return $response;
     }
 
-    #[Route('/addOrder/{id}', name: "app_single_add_order", methods: ['GET'])]
+    #[Route('api/addOrder/{id}', name: "app_single_add_order", methods: ['GET'])]
     #[IsGranted('ROLE_USER')]
     public function addOrder(EntityManagerInterface $em, StateBookingRepository $stateBookingRepository, Request $request): Response
     {
