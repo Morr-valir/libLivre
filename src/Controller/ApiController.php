@@ -132,14 +132,21 @@ class ApiController extends AbstractController
     {
         $idBooking = $request->get('id');
         $bookingSelect = $this->bookingRepository->findById($idBooking);
-
+        $bookId = $bookingSelect->getBooks()[0]->getId();
+        $book = $this->repoBooks->findById($bookId);
         $user = $this->getUser();
         if (!$user) {
             return new Response('Unauthorized', Response::HTTP_UNAUTHORIZED);
         }
+        // Vérifier que l'utilisateur est le propriétaire de la réservation
+        if (!$bookingSelect || $bookingSelect->getUser() !== $user) {
+            // Gérer l'erreur si la réservation n'a pas été trouvée ou si l'utilisateur n'est pas le propriétaire
+            // Par exemple, retourner une réponse HTTP 404 Not Found ou 403 Forbidden
+            return new Response('Reservation not found or unauthorized', Response::HTTP_NOT_FOUND);
+        }
         // Récupérer le state "annulé"
         $stateAnnule = $stateBookingRepository->stateSelected("Annulé");
-
+        $book->setIsAvailable(true);
         // Passer le booking en annulé
         $bookingSelect->setState($stateAnnule);
         $em->flush(); 
