@@ -120,7 +120,7 @@ class ApiController extends AbstractController
             ->setCreatedAt(new DateTimeImmutable("now"))
             ->setState($stateBookingRepository->stateSelected("Reservé"));
         $bookSelect->setIsAvailable(false);
-        $em->persist($booking, $bookSelect);
+        $em->persist($booking);
         $em->flush();
         return new Response('Votre livre à bien été réservé !', Response::HTTP_OK);
     }
