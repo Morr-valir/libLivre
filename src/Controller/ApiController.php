@@ -6,10 +6,7 @@ use App\Entity\Book;
 use DateTimeImmutable;
 use App\Entity\Booking;
 use App\Repository\BookRepository;
-use ApiPlatform\Metadata\ApiResource;
 use App\Repository\BookingRepository;
-use App\Repository\CategoryRepository;
-use ApiPlatform\Metadata\GetCollection;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\StateBookingRepository;
 use Symfony\Bundle\SecurityBundle\Security;
@@ -97,7 +94,12 @@ class ApiController extends AbstractController
         return $response;
     }
 
-    #[Route('api/addOrder/{id}', name: "app_single_add_order", methods: ['GET'])]
+    /**
+     * Create a new booking user
+     * @param  $id book
+     * @return  JsonResponse
+     */
+    #[Route('api/addOrder/{id}', name: "api_add_order", methods: ['GET'])]
     #[IsGranted('ROLE_USER')]
     public function addOrder(EntityManagerInterface $em, StateBookingRepository $stateBookingRepository, Request $request): Response
     {
@@ -117,11 +119,35 @@ class ApiController extends AbstractController
             ->addBook($bookSelect)
             ->setCreatedAt(new DateTimeImmutable("now"))
             ->setState($stateBookingRepository->stateSelected("Reservé"));
-
-        $em->persist($booking);
+        $bookSelect->setIsAvailable(false);
+        $em->persist($booking, $bookSelect);
         $em->flush();
         return new Response('Votre livre à bien été réservé !', Response::HTTP_OK);
     }
 
+    #[Route('api/removeBooking/{id}', name: 'api_delete_booking', methods: ['GET'])]
+    #[IsGranted('ROLE_USER')]
+    public function deleteBooking(EntityManagerInterface $em, StateBookingRepository $stateBookingRepository, Request $request): Response
+    {
+        $idBooking = $request->get('id');
+        $bookingSelect = $this->bookingRepository->findById($idBooking);
+
+        $user = $this->getUser();
+        if (!$user) {
+            return new Response('Unauthorized', Response::HTTP_UNAUTHORIZED);
+        }
+        // Récupérer le state "annulé"
+        $stateAnnule = $stateBookingRepository->stateSelected("Annulé");
+
+        // Passer le booking en annulé
+        $bookingSelect->setState($stateAnnule);
+        $em->flush(); 
+        // Supprimer le Booking
+        $em->remove($bookingSelect);
+        $em->flush(); 
+
+        // Response Valide après suppression
+        return new Response('Réservation annulée', Response::HTTP_OK);
+    }
 
 }
