@@ -99,7 +99,7 @@ class ApiController extends AbstractController
      * @param  $id book
      * @return  JsonResponse
      */
-    #[Route('api/addOrder/{id}', name: "api_add_order", methods: ['GET'])]
+    #[Route('api/addOrder/{id}', name: "api_order", methods: ['GET'])]
     #[IsGranted('ROLE_USER')]
     public function addOrder(EntityManagerInterface $em, StateBookingRepository $stateBookingRepository, Request $request): Response
     {
@@ -107,12 +107,13 @@ class ApiController extends AbstractController
         $bookSelect = $this->repoBooks->findById($idBook);
         $user = $this->getUser();
         if (!$user) {
-
             return new Response('Unauthorized', Response::HTTP_UNAUTHORIZED);
         }
-        if ($bookSelect->isIsAvailable()){
+
+        if ($bookSelect->isIsAvailable() == false){
             return new Response('Livre non disponible', Response::HTTP_CONFLICT);
         }
+        
         $booking = new Booking();
         $booking->setReference($user->getId() . "-" .$bookSelect->getId())
             ->setUser($user)
